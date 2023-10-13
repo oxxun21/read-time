@@ -1,0 +1,31 @@
+.layout {
+  margin: 0 auto;
+  max-width: 80rem;
+  background-color: #212121;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.main {
+  border-top: 1px solid #3f4145;
+  border-bottom: 1px solid #3f4145;
+  padding: 2rem 5rem;
+}
+
+.footer {
+  width: 100%;
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  background-color: #212121;
+}
+
+.footer p {
+  margin-top: 5px;
+  color: var(--gray200-color);
+}

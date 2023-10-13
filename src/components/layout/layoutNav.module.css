@@ -1,0 +1,13 @@
+.nav {
+  width: 40%;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav li a {
+  padding: 1rem;
+}

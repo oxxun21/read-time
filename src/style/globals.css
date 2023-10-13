@@ -1,0 +1,66 @@
+:root {
+  --main-blue-color: #1E90FF;
+  --main-cinnamon-color: #FA8072;
+  --sub-blue-color: #87CEFA;
+  --sub-cinnamon-color: #FFA07A;
+  --gray100-color: #D7D7D7;
+  --gray200-color: #C4C4C4;
+  --gray300-color: #8C8C8C;
+  --gray400-color: #777;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: #121212;
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+input {
+  all: unset;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  all: unset;
+}
+
+img {
+  vertical-align: top;
+}
+
+li {
+  list-style: none;
+}

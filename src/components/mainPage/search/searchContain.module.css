@@ -1,0 +1,29 @@
+.searchSection {
+  padding-right: 2rem;
+}
+
+.searchSection h2 {
+  font-size: 1.25rem;
+}
+
+
+.searchForm {
+  position: relative;
+  margin-top: 20px;
+}
+
+.searchForm input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--gray300-color);
+  border-radius: 2rem;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.searchForm button {
+  position: absolute;
+  right: 1.5rem;
+  top: 7px;
+  cursor: pointer;
+}

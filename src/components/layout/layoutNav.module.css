@@ -1,6 +1,6 @@
 .nav {
   min-width: 40%;
-  max-width: 50%;
+  max-width: 75%;
 }
 
 .nav ul {
@@ -11,9 +11,9 @@
 
 .nav li {
   text-align: center;
-  padding: 1rem;
 }
 
 .nav li a {
   width: 100%;
+  padding: 1rem;
 }

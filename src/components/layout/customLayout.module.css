@@ -2,6 +2,10 @@
   margin: 0 auto;
   max-width: 80rem;
   background-color: #212121;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .header {
@@ -20,8 +24,6 @@
   border-top: 1px solid #3f4145;
   width: 100%;
   padding: 2rem;
-  position: absolute;
-  bottom: 0;
   background-color: #212121;
 }
 

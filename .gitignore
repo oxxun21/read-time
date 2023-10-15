@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-searchAPIKey.js
+DATABASE_KEY.js
+SEARCH_API_KEY.js
 
 # testing
 /coverage

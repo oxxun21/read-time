@@ -6,7 +6,7 @@
 .searchForm input {
   width: 100%;
   padding: 1rem 1.5rem;
-  background: var(--gray300-color);
+  background: var(--gray400-color);
   border-radius: 2rem;
   box-sizing: border-box;
   color: #fff;

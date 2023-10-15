@@ -1,8 +1,9 @@
 "use client";
 import s from "./mainPage.module.css";
+import { RecoilRoot } from "recoil";
 import SearchForm from "@/components/mainPage/search/searchForm";
 import SearchView from "@/components/mainPage/search/searchView";
-import { RecoilRoot } from "recoil";
+import PostForm from "@/components/mainPage/post/postForm";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         </section>
         <section className={s.postsSection}>
           <h3>Memories</h3>
+          <PostForm />
           <article></article>
         </section>
       </div>

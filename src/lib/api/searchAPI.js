@@ -7,8 +7,10 @@ export const searchAPI = async (query) => {
         query: query,
       },
     });
-    console.log(response.data);
-    return response.data;
+
+    const data = response.data.documents.filter((item) => item.thumbnail);
+
+    return data;
   } catch (error) {
     console.error(error);
     throw error;

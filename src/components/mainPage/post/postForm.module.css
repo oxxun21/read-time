@@ -35,6 +35,12 @@
   /* font-family: ; */
 }
 
+.posting textarea::placeholder {
+  color: var(--gray200-color);
+  font-size: 14px;
+}
+
+
 .posting textarea:focus {
   outline: 1px solid var(--gray200-color);
 }

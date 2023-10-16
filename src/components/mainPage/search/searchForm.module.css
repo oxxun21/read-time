@@ -12,6 +12,11 @@
   color: #fff;
 }
 
+.searchForm input::placeholder {
+  color: var(--gray200-color);
+  font-size: 14px;
+}
+
 .searchForm button {
   position: absolute;
   right: 1.5rem;

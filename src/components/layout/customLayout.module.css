@@ -16,6 +16,17 @@
   border-bottom: 1px solid #3f4145;
 }
 
+.logoContainer {
+  width: 130px;
+  height: 80px;
+}
+
+.logoContainer p {
+  text-align: center;
+  padding: 1.25rem 0;
+  color: var(--gray100-color);
+}
+
 .main {
   padding: 2rem 3rem;
 }

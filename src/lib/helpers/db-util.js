@@ -3,7 +3,7 @@ import { DATABASE_KEY } from "../utils/DATABASE_KEY";
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(
-    `mongodb+srv://OhGaEun:${DATABASE_KEY}@cluster0.kach5sy.mongodb.net/`
+    `mongodb+srv://OhGaEun:${DATABASE_KEY}@cluster0.kach5sy.mongodb.net/ReadTime`
   );
   return client;
 }
@@ -17,5 +17,6 @@ export async function insertDocument(client, collection, document) {
 export async function getAllDocuments(client, collection) {
   const db = client.db();
   const documents = await db.collection(collection).find().toArray();
+  console.log(documents);
   return documents;
 }

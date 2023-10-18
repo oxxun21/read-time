@@ -1,36 +1,30 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import s from "./searchView.module.css";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { bookDataState } from "@/lib/recoil/bookDataAtom";
 import Image from "next/image";
-import { selectedBookState } from "@/lib/recoil/selectedBookAtom";
 
-export default function SearchView() {
-  const [expandedIndex, setExpandedIndex] = useState(null);
-  const setSelectedData = useSetRecoilState(selectedBookState);
-  const bookData = useRecoilValue(bookDataState);
+export default function SearchView({ searchResult }) {
+  // const [expandedIndex, setExpandedIndex] = useState(null);
 
-  // 책 소개 자세히 보기
-  const handleContentClick = (idx) => {
-    if (expandedIndex === idx) {
-      setExpandedIndex(null);
-    } else {
-      setExpandedIndex(idx);
-    }
-  };
+  // // 책 소개 자세히 보기
+  // const handleContentClick = (idx) => {
+  //   if (expandedIndex === idx) {
+  //     setExpandedIndex(null);
+  //   } else {
+  //     setExpandedIndex(idx);
+  //   }
+  // };
 
-  // 선택한 책 데이터 저장
-  const handleSaveData = (idx) => {
-    setSelectedData(bookData[idx]);
-  };
+  // // 선택한 책 데이터 저장
+  // const handleSaveData = (idx) => {
+  //   setSelectedData(bookData[idx]);
+  // };
 
   return (
     <article className={s.searchViewContain}>
-      {bookData && <p>책 표지를 눌러 글을 남겨봐요.</p>}
-      {bookData && (
+      {/* {searchResult && <p>책 표지를 눌러 글을 남겨봐요.</p>}
+      {searchResult && (
         <ul>
-          {bookData.map((i, idx) => (
+          {searchResult.map((i, idx) => (
             <li key={i.isbn} className={s.bookInfo}>
               <h4>{i.title}</h4>
               <button
@@ -55,7 +49,7 @@ export default function SearchView() {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </article>
   );
 }

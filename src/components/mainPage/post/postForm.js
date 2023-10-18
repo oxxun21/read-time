@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { selectedBookState } from "@/lib/recoil/selectedBookAtom";
 import { useRecoilValue } from "recoil";
@@ -6,13 +5,9 @@ import s from "./postForm.module.css";
 import Image from "next/image";
 
 function PostForm() {
-  const selectedBookData = useRecoilValue(selectedBookState);
-
-  console.log(selectedBookData);
-
   return (
     <>
-      {selectedBookData ? (
+      {/* {selectedBookData ? (
         <form className={s.postForm}>
           <Image
             src={selectedBookData.thumbnail}
@@ -28,7 +23,7 @@ function PostForm() {
         </form>
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 }

@@ -21,7 +21,7 @@ export async function getBookSearch(query) {
     });
 
     const data = response.data.documents.filter((item) => item.thumbnail);
-
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);

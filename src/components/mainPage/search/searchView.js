@@ -1,41 +1,59 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import s from "./searchView.module.css";
 import Image from "next/image";
 
 export default function SearchView({ searchResult }) {
-  // const [expandedIndex, setExpandedIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-  // // 책 소개 자세히 보기
-  // const handleContentClick = (idx) => {
-  //   if (expandedIndex === idx) {
-  //     setExpandedIndex(null);
-  //   } else {
-  //     setExpandedIndex(idx);
-  //   }
-  // };
+  // 책 소개 자세히 보기
+  const handleContentClick = (idx) => {
+    if (expandedIndex === idx) {
+      setExpandedIndex(null);
+    } else {
+      setExpandedIndex(idx);
+    }
+  };
 
-  // // 선택한 책 데이터 저장
-  // const handleSaveData = (idx) => {
-  //   setSelectedData(bookData[idx]);
-  // };
+  // 선택한 책 데이터 저장
+  const handleSaveData = async (book) => {
+    console.log(book);
+    try {
+      const response = await fetch("/api/saveBook", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ book }),
+      });
+      if (!response.ok) {
+        return new Error("책 저장 실패");
+      }
+
+      const data = await response.json();
+      console.log(data); // 성공적인 응답 확인
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <article className={s.searchViewContain}>
-      {/* {searchResult && <p>책 표지를 눌러 글을 남겨봐요.</p>}
+      {searchResult && <p>책 표지를 눌러 글을 남겨봐요.</p>}
       {searchResult && (
         <ul>
-          {searchResult.map((i, idx) => (
-            <li key={i.isbn} className={s.bookInfo}>
-              <h4>{i.title}</h4>
+          {searchResult.map((book, idx) => (
+            <li key={book.isbn} className={s.bookInfo}>
+              <h4>{book.title}</h4>
               <button
                 type="button"
                 onClick={() => {
-                  handleSaveData(idx);
+                  handleSaveData(book);
                 }}
               >
                 <Image
-                  src={i.thumbnail}
-                  alt={i.title}
+                  src={book.thumbnail}
+                  alt={book.title}
                   width={80}
                   height={110}
                 />
@@ -44,12 +62,12 @@ export default function SearchView({ searchResult }) {
                 className={expandedIndex === idx ? null : s.expanded}
                 onClick={() => handleContentClick(idx)}
               >
-                {i.contents ? `${i.contents}...` : "책 소개 없음"}
+                {book.contents ? `${book.contents}...` : "책 소개 없음"}
               </p>
             </li>
           ))}
         </ul>
-      )} */}
+      )}
     </article>
   );
 }

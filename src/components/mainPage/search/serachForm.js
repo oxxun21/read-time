@@ -1,25 +1,34 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./searchForm.module.css";
 import Image from "next/image";
 import search_icon from "@/assets/search_icon.svg";
+import { RESTAPI_KEY } from "@/lib/utils/SEARCH_API_KEY";
 
 export default function SerachForm() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSearch = async (event) => {
-    event.preventDefault();
-    console.log(search);
+  const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/search?search=${search}`, {
-        method: "GET", // GET 요청으로 수정
-      });
+      const response = await fetch(
+        `https://dapi.kakao.com/v3/search/book?query=${search}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: ` KakaoAK ${RESTAPI_KEY}`,
+          },
+          cache: "no-store",
+        }
+      );
+
       if (response.ok) {
-        const data = await response.json();
-        setSearchResult(data);
+        const resJson = await response.json();
+        const filterData = resJson.documents.filter((item) => item.thumbnail);
+        console.log(filterData);
+        setSearchResult(filterData);
       } else {
         console.error("API 호출 실패:", response.status);
       }
@@ -30,14 +39,13 @@ export default function SerachForm() {
     }
   };
 
-  useEffect(() => {
-    if (search) {
-      handleSearch();
-    }
-  }, [search]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleSearch();
+  };
 
   return (
-    <form className={s.searchForm} onSubmit={handleSearch}>
+    <form className={s.searchForm} onSubmit={handleSubmit}>
       <label htmlFor="search" className="a11y-hidden">
         도서 검색
       </label>

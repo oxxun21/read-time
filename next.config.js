@@ -12,8 +12,3 @@ module.exports = {
     DATABASE_KEY: process.env.DATABASE_KEY,
   },
 };
-
-module.exports = {
-  reactStrictMode: true,
-  output: "export",
-};

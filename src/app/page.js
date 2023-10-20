@@ -1,13 +1,12 @@
-import SearchSeaction from "@/components/mainPage/search/searchSeaction";
 import s from "./mainPage.module.css";
+import SearchSeaction from "@/components/mainPage/search/searchSeaction";
+import PostsSection from "@/components/mainPage/post/postsSection";
 
 export default function Home() {
   return (
     <div className={s.contain}>
       <SearchSeaction />
-      <section className={s.postsSection}>
-        <h3>Memories</h3>
-      </section>
+      <PostsSection />
     </div>
   );
 }

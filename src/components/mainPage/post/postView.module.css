@@ -1,0 +1,39 @@
+.postViewList {
+  margin-top: 20px;
+}
+
+.postViewList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(87, 87, 87, 0.2);
+  padding: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.postViewList li::before {
+  position: absolute;
+  content: "";
+  width: 0.5rem;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(87, 87, 87, 0.581);
+}
+
+.postViewList li:last-of-type {
+  margin-bottom: 0;
+}
+
+.postViewList li strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.postViewList li p {
+  font-size: 12px;
+  margin-top: 6px;
+  line-height: 1.5;
+}

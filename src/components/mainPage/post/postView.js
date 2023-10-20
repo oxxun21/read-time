@@ -1,21 +1,51 @@
-import { getBookPosts } from "@/lib/helpers/api-util";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import s from "./postView.module.css";
+import Image from "next/image";
 
-export default function PostView({ bookPosts }) {
-  console.log(bookPosts);
+function PostView() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        const response = await fetch("/api/postView");
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    dataFetch();
+  }, []);
+
   return (
-    <div>
-      {/* {bookPosts.map((post) => (
-        <div key={post._id}>{post.title}</div>
-      ))} */}
-    </div>
+    <>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul className={s.postViewList}>
+          {posts.map((post) => (
+            <li key={post._id}>
+              <Image
+                src={post.thumbnail}
+                alt={post.title}
+                width={70}
+                height={100}
+              />
+              <div>
+                <strong>{post.title}</strong>
+                <p>{post.sentence}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 
-export async function getStaticProps() {
-  const bookPosts = await getBookPosts();
-
-  return {
-    props: { bookPosts },
-  };
-}
+export default PostView;

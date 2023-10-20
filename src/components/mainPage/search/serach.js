@@ -9,10 +9,9 @@ import SearchView from "./searchView";
 export default function Serach() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleSearch = async () => {
-    setLoading(true);
     try {
       const response = await fetch(
         `https://dapi.kakao.com/v3/search/book?query=${search}`,

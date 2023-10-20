@@ -43,7 +43,13 @@ export default function Logo() {
       {showTime ? (
         <p>{currentTime}</p>
       ) : (
-        <Image src={logo} alt="Read Time 로고" width={130} height={80} />
+        <Image
+          src={logo}
+          alt="Read Time 로고"
+          width={130}
+          height={80}
+          priority="high"
+        />
       )}
     </div>
   );

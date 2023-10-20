@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import s from "./searchView.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function SearchView({ searchResult }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const router = useRouter();
 
   // 책 소개 자세히 보기
   const handleContentClick = (idx) => {
@@ -31,7 +33,8 @@ export default function SearchView({ searchResult }) {
       }
 
       const data = await response.json();
-      console.log(data); // 성공적인 응답 확인
+      console.log(data);
+      router.push("/post");
     } catch (error) {
       console.error(error);
     }
@@ -44,7 +47,7 @@ export default function SearchView({ searchResult }) {
         <ul>
           {searchResult.map((book, idx) => (
             <li key={book.isbn} className={s.bookInfo}>
-              <h4>{book.title}</h4>
+              <strong>{book.title}</strong>
               <button
                 type="button"
                 onClick={() => {

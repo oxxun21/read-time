@@ -7,4 +7,8 @@ module.exports = {
   images: {
     domains: ["search1.kakaocdn.net"],
   },
+  env: {
+    RESTAPI_KEY: process.env.RESTAPI_KEY,
+    DATABASE_KEY: process.env.DATABASE_KEY,
+  },
 };

@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import s from "./search.module.css";
 import Image from "next/image";
 import search_icon from "@/assets/search_icon.svg";
-import { RESTAPI_KEY } from "@/lib/utils/SEARCH_API_KEY";
 import SearchView from "./searchView";
 
 export default function Serach() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const [loading, setLoading] = useState(true);
+  const rest_key = process.env.RESTAPI_KEY;
 
   const handleSearch = async () => {
     try {
@@ -18,7 +18,7 @@ export default function Serach() {
         {
           method: "GET",
           headers: {
-            Authorization: ` KakaoAK ${RESTAPI_KEY}`,
+            Authorization: ` KakaoAK ${rest_key}`,
           },
           cache: "no-store",
         }

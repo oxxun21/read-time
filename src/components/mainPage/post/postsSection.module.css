@@ -1,0 +1,14 @@
+.postsSection {
+  padding-left: 2rem;
+  position: relative;
+}
+
+.postsSection::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: #3f4145;
+}

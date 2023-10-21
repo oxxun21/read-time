@@ -9,7 +9,7 @@ export default async function PostsSection() {
   let posts = [];
 
   try {
-    const response = await fetch(`${apiEndpoint}/api/postView`, {
+    const response = await fetch(`/api/postView`, {
       cache: "no-store",
     });
     posts = await response.json();

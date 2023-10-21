@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import s from "./postView.module.css";
+import s from "./postview.module.css";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +12,7 @@ function PostView() {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const response = await fetch("/api/postView", { cache: "no-store" });
+        const response = await fetch("/api/postview", { cache: "no-store" });
         const data = await response.json();
         setPosts(data);
       } catch (error) {

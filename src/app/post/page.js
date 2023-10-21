@@ -26,7 +26,7 @@ function Post() {
     }
 
     try {
-      const response = await fetch("/api/savePost", {
+      const response = await fetch("/api/savepost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

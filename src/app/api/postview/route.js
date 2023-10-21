@@ -1,6 +1,8 @@
 import { connectDatabase, getAllDocuments } from "@/lib/helpers/db-util";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   let client;
 

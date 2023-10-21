@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import s from "./postview.module.css";
 import Image from "next/image";
 
-export const dynamic = "force-dynamic";
-
 function PostView() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

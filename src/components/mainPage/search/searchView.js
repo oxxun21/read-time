@@ -2,11 +2,10 @@
 import React, { useState } from "react";
 import s from "./searchView.module.css";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SearchView({ searchResult }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const router = useRouter();
 
   // 책 소개 자세히 보기
   const handleContentClick = (idx) => {
@@ -14,29 +13,6 @@ export default function SearchView({ searchResult }) {
       setExpandedIndex(null);
     } else {
       setExpandedIndex(idx);
-    }
-  };
-
-  // 선택한 책 데이터 저장
-  const handleSaveData = async (book) => {
-    console.log(book);
-    try {
-      const response = await fetch("/api/saveBook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ book }),
-      });
-      if (!response.ok) {
-        return new Error("책 저장 실패");
-      }
-
-      const data = await response.json();
-      console.log(data);
-      router.push("/post");
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -48,10 +24,10 @@ export default function SearchView({ searchResult }) {
           {searchResult.map((book, idx) => (
             <li key={book.isbn} className={s.bookInfo}>
               <strong>{book.title}</strong>
-              <button
-                type="button"
-                onClick={() => {
-                  handleSaveData(book);
+              <Link
+                href={{
+                  pathname: "/post",
+                  query: { title: book.title, thumbnail: book.thumbnail },
                 }}
               >
                 <Image
@@ -60,7 +36,7 @@ export default function SearchView({ searchResult }) {
                   width={80}
                   height={110}
                 />
-              </button>
+              </Link>
               <p
                 className={expandedIndex === idx ? null : s.expanded}
                 onClick={() => handleContentClick(idx)}

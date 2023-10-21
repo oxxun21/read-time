@@ -51,24 +51,18 @@ function Post() {
   };
 
   return (
-    <>
-      {/* {!loading ? ( */}
-      <form className={s.postForm} onSubmit={handleSubmit}>
-        <Image src={thumbnail} alt={title} width={120} height={160} />
-        <div className={s.posting}>
-          <strong>{title}</strong>
-          <textarea
-            placeholder="기억에 남기고 싶은 문장을 적어주세요"
-            value={sentence}
-            onChange={(e) => setSentence(e.target.value)}
-          />
-          <button type="submit">등록하기</button>
-        </div>
-      </form>
-      {/* ) : (
-        <p>loading</p>
-      )} */}
-    </>
+    <form className={s.postForm} onSubmit={handleSubmit}>
+      <Image src={thumbnail} alt={title} width={120} height={160} />
+      <div className={s.posting}>
+        <strong>{title}</strong>
+        <textarea
+          placeholder="기억에 남기고 싶은 문장을 적어주세요"
+          value={sentence}
+          onChange={(e) => setSentence(e.target.value)}
+        />
+        <button type="submit">등록하기</button>
+      </div>
+    </form>
   );
 }
 

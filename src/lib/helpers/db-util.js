@@ -22,7 +22,7 @@ export async function getPostDocuments(client, collection) {
     .find()
     .sort({ _id: -1 })
     .toArray();
-  return documents[0];
+  return documents;
 }
 
 export async function getAllDocuments(client, collection) {

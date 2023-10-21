@@ -15,7 +15,7 @@ export default function PostForm() {
       try {
         const response = await fetch("/api/postBook", { cache: "no-store" });
         const data = await response.json();
-        setFetchingBook(data.book);
+        setFetchingBook(data[0].book);
         console.log(data);
       } catch (error) {
         console.error(error);

@@ -2,30 +2,30 @@
 import React from "react";
 import s from "./postView.module.css";
 import Image from "next/image";
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
-async function PostView() {
+async function PostView({ posts }) {
   // const [posts, setPosts] = useState([]);
   // const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
 
-  let posts = [];
-  // const dataFetch =  () => {
-  try {
-    const response = await fetch("/api/postView", { cache: "no-store" });
-    posts = await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  // finally {
-  //   setLoading(false);
+  // let posts = [];
+  // // const dataFetch =  () => {
+  // try {
+  //   const response = await fetch("/api/postView", { cache: "no-store" });
+  //   posts = await response.json();
+  // } catch (error) {
+  //   console.error(error);
   // }
-  // };
-  // dataFetch();
-  // }, []);
+  // // finally {
+  // //   setLoading(false);
+  // // }
+  // // };
+  // // dataFetch();
+  // // }, []);
 
-  console.log(posts);
+  // console.log(posts);
   return (
     <>
       {/* {loading ? (

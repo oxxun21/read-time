@@ -2,7 +2,8 @@ import React from "react";
 import s from "./customLayout.module.css";
 import Link from "next/link";
 import LayoutNav from "./layoutNav";
-import Logo from "./logo";
+import logo from "@/assets/logo.svg";
+import Image from "next/image";
 
 export default function CustomLayout({ children }) {
   return (
@@ -10,7 +11,13 @@ export default function CustomLayout({ children }) {
       <header className={s.header}>
         <h1>
           <Link href="/">
-            <Logo />
+            <Image
+              src={logo}
+              alt="Read Time 로고"
+              width={130}
+              height={80}
+              priority="high"
+            />
           </Link>
         </h1>
         <LayoutNav />

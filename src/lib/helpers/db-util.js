@@ -27,6 +27,10 @@ export async function getPostDocuments(client, collection) {
 
 export async function getAllDocuments(client, collection) {
   const db = client.db();
-  const documents = await db.collection(collection).find().toArray();
+  const documents = await db
+    .collection(collection)
+    .find()
+    .sort({ _id: -1 })
+    .toArray();
   return documents;
 }

@@ -10,7 +10,9 @@ function PostView() {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const response = await fetch("/api/postView");
+        const response = await fetch("/api/postView", {
+          next: { revalidate: 60 },
+        });
         const data = await response.json();
         setPosts(data);
       } catch (error) {

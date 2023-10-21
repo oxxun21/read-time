@@ -27,6 +27,7 @@ export default function SearchView({ searchResult }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ book }),
+        cache: "no-store",
       });
       if (!response.ok) {
         return new Error("책 저장 실패");

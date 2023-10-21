@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import s from "./postsSection.module.css";
 import PostView from "./postview";

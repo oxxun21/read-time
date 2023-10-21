@@ -13,7 +13,7 @@ function PostForm() {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const response = await fetch("/api/postBook");
+        const response = await fetch("/api/postBook", { cache: "no-store" });
         const data = await response.json();
         setFetchingBook(data.book);
         console.log(data);

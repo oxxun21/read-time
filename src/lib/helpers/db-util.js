@@ -21,7 +21,6 @@ export async function getPostDocuments(client, collection) {
     .collection(collection)
     .find()
     .sort({ _id: -1 })
-    .limit(1)
     .toArray();
   return documents[0];
 }

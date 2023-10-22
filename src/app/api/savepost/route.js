@@ -1,11 +1,11 @@
 import { connectDatabase, insertDocument } from "@/lib/helpers/db-util";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req) {
   const res = await req.json();
-
   let client;
-
   try {
     client = await connectDatabase();
 

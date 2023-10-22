@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <body className={poppins.className} suppressHydrationWarning={true}>
         <AuthSession>{children}</AuthSession>
+        <div id="portal"></div>
       </body>
     </html>
   );

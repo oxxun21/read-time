@@ -39,14 +39,14 @@ function Post() {
       });
 
       if (response.ok) {
-        alert("데이터가 성공적으로 저장되었습니다.");
+        alert("게시글 등록 완료!");
         router.push("/");
       } else {
-        alert("데이터 저장에 실패했습니다.");
+        alert("게시글 등록에 실패했습니다.");
       }
     } catch (error) {
       console.error("데이터 저장 오류:", error);
-      alert("데이터 저장 중 오류가 발생했습니다.");
+      alert("저장 중 오류가 발생했습니다.");
     }
   };
 

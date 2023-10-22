@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import s from "./postview.module.css";
 import Image from "next/image";
 import trash_icon from "@/assets/trash_icon.png";
+import Modal from "@/components/modal/modal";
 
 function PostView() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -23,6 +25,14 @@ function PostView() {
     dataFetch();
   }, []);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const handleDelete = async (postId) => {
     try {
       const response = await fetch(`/api/postdelete/${postId}`, {
@@ -38,6 +48,7 @@ function PostView() {
     } catch (error) {
       console.error(error);
     }
+    setIsModalOpen(false);
   };
 
   return (
@@ -58,7 +69,7 @@ function PostView() {
                 <strong>{post.title}</strong>
                 <p>{post.sentence}</p>
               </div>
-              <button type="button" onClick={() => handleDelete(post._id)}>
+              <button type="button" onClick={openModal}>
                 <Image
                   src={trash_icon}
                   alt="게시글 삭제"
@@ -66,6 +77,22 @@ function PostView() {
                   height={20}
                 />
               </button>
+              {isModalOpen && (
+                <Modal closeModal={closeModal}>
+                  <p>게시글을 삭제하시겠습니까?</p>
+                  <div className={s.modalBtnDiv}>
+                    <button type="button" onClick={closeModal}>
+                      남겨둘래요
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(post._id)}
+                    >
+                      삭제할래요
+                    </button>
+                  </div>
+                </Modal>
+              )}
             </li>
           ))}
         </ul>

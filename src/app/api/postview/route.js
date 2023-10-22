@@ -1,14 +1,13 @@
 import { connectDatabase, getAllDocuments } from "@/lib/helpers/db-util";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-
-export async function GET() {
+export async function GET(req) {
+  const session = await getServerSession({ req });
   let client;
-
   try {
     client = await connectDatabase();
-    const posts = await getAllDocuments(client, "bookPost");
+    const posts = await getAllDocuments(client, "bookPost", {username: session.user.name});
     client.close();
 
     if (posts) {

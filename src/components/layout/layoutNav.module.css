@@ -26,13 +26,16 @@
 }
 
 .loginBtn {
+  background: url("../../assets//kakao_icon.webp") no-repeat 1rem/10%;
+  background-color: #FDDC3F;
   cursor: pointer;
-  border: 1px solid var(--gray400-color);
   border-radius: 8px;
   padding: 1rem;
   width: 100%;
   display: block;
   box-sizing: border-box;
+  color: #121212;
+
 }
 
 .loginBtn:last-of-type {

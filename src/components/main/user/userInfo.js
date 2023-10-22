@@ -6,9 +6,6 @@ import s from "./userInfo.module.css";
 
 export default function UserInfo() {
   const { data: session } = useSession();
-
-  console.log(session);
-
   return (
     <>
       {session ? (

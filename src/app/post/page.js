@@ -1,21 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./post.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 function Post() {
   const params = useSearchParams();
   const router = useRouter();
   const [sentence, setSentence] = useState("");
-
   const title = params.get("title");
   const thumbnail = params.get("thumbnail");
-
-  useEffect(() => {
-    console.log(title);
-    console.log(thumbnail);
-  }, []);
+  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +28,7 @@ function Post() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          username: session.user.name,
           thumbnail: thumbnail,
           title: title,
           sentence: sentence,

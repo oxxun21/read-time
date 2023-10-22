@@ -1,6 +1,6 @@
-import CustomLayout from "@/components/layout/customLayout";
 import "@/style/globals.css";
 import { Poppins } from "next/font/google";
+import AuthSession from "./authSesstion";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={poppins.className} suppressHydrationWarning={true}>
-        <CustomLayout>{children}</CustomLayout>
+        <AuthSession>{children}</AuthSession>
       </body>
     </html>
   );

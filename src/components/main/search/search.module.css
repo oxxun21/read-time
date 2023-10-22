@@ -20,6 +20,6 @@
 .searchForm button {
   position: absolute;
   right: 1.5rem;
-  top: 7px;
+  top: 10px;
   cursor: pointer;
 }

@@ -59,7 +59,7 @@ export default function Serach() {
           onChange={(e) => setSearch(e.target.value)}
         />
         <button type="submit">
-          <Image src={search_icon} alt="검색 버튼" width={40} height={40} />
+          <Image src={search_icon} alt="검색 버튼" width={35} height={35} />
         </button>
       </form>
       <SearchView searchResult={searchResult} />

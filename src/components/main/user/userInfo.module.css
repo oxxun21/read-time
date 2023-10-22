@@ -1,0 +1,14 @@
+.userArticle {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.userArticle img {
+  border-radius: 8px;
+}
+
+.userArticle span {
+  font-size: 14px;
+}

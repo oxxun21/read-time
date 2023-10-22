@@ -23,6 +23,14 @@
   background-color: rgba(87, 87, 87, 0.581);
 }
 
+.postViewList li>img {
+  flex-grow: 0;
+}
+
+.postViewList li>div {
+  flex-grow: 2;
+}
+
 .postViewList li:last-of-type {
   margin-bottom: 0;
 }
@@ -41,7 +49,5 @@
 .postViewList button {
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  flex-grow: 0;
 }

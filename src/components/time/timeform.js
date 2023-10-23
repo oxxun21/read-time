@@ -16,35 +16,42 @@ export default function Timeform() {
     const formattedHours = hoursValue.toString().padStart(2, "0");
     const formattedMinutes = minutesValue.toString().padStart(2, "0");
 
-    // api
-    const formattedReadingTime = `${formattedHours}:${formattedMinutes}`;
-    console.log("날짜:", date);
-    console.log("독서 시간:", formattedReadingTime);
+    console.log(formattedHours);
+    console.log(formattedMinutes);
 
-    try {
-      const response = await fetch("/api/timerecord", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: session.user.name,
-          date: date,
-          time: formattedReadingTime,
-        }),
-      });
+    if (formattedHours === "00" && formattedMinutes === "00") {
+      alert("시간을 입력해주세요!");
+    } else {
+      // api
+      const formattedReadingTime = `${formattedHours}:${formattedMinutes}`;
+      console.log("날짜:", date);
+      console.log("독서 시간:", formattedReadingTime);
 
-      if (response.ok) {
-        alert("기록 완료!");
-      } else {
-        alert("기록에 실패했습니다.");
+      try {
+        const response = await fetch("/api/timerecord", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: session.user.name,
+            date: date,
+            time: formattedReadingTime,
+          }),
+        });
+
+        if (response.ok) {
+          alert("기록 완료!");
+        } else {
+          alert("기록에 실패했습니다.");
+        }
+      } catch (error) {
+        console.error("데이터 저장 오류:", error);
+        alert("저장 중 오류가 발생했습니다.");
+      } finally {
+        hoursRef.current.value = "";
+        minutesRef.current.value = "";
       }
-    } catch (error) {
-      console.error("데이터 저장 오류:", error);
-      alert("저장 중 오류가 발생했습니다.");
-    } finally {
-      hoursRef.current.value = "";
-      minutesRef.current.value = "";
     }
   };
 

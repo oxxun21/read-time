@@ -10,6 +10,11 @@ export default function LayoutNav() {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const { data: session } = useSession();
 
+  const handleLogout = async () => {
+    await signOut();
+    window.location.href = "/";
+  };
+
   return (
     <nav className={s.nav}>
       <ul>
@@ -73,7 +78,7 @@ export default function LayoutNav() {
             </button>
             <button
               type="button"
-              onClick={() => signOut()}
+              onClick={handleLogout}
               className={s.logoutBtn}
             >
               네

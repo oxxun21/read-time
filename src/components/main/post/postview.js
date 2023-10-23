@@ -75,67 +75,85 @@ function PostView() {
   return (
     <>
       {loading ? (
-        <p className={s.loading}>잠시만 기다려주세요...</p>
+        <div className={s.loading}>
+          <p>잠시만 기다려주세요</p>
+        </div>
       ) : (
         <ul className={s.postViewList}>
           {session ? (
             <>
-              {posts.map((post) => (
-                <li key={post._id}>
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    width={70}
-                    height={100}
-                  />
-                  <div>
-                    <strong>{post.title}</strong>
-                    <p>{post.sentence}</p>
-                  </div>
-                  <button type="button" onClick={openModal}>
-                    <Image
-                      src={trash_icon}
-                      alt="게시글 삭제"
-                      width={20}
-                      height={20}
-                    />
-                  </button>
-                  {isModalOpen && (
-                    <Modal closeModal={closeModal}>
-                      <p>게시글을 삭제하시겠습니까?</p>
-                      <div className={s.modalBtnDiv}>
-                        <button type="button" onClick={closeModal}>
-                          남겨둘래요
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDelete(post._id)}
-                        >
-                          삭제할래요
-                        </button>
+              {!posts || posts.length === 0 ? (
+                <div className={s.noPosts}>
+                  <p>아직 게시글이 없어요</p>
+                </div>
+              ) : (
+                <>
+                  {posts.map((post) => (
+                    <li key={post._id}>
+                      <Image
+                        src={post.thumbnail}
+                        alt={post.title}
+                        width={70}
+                        height={100}
+                      />
+                      <div>
+                        <strong>{post.title}</strong>
+                        <p>{post.sentence}</p>
                       </div>
-                    </Modal>
-                  )}
-                </li>
-              ))}
+                      <button type="button" onClick={openModal}>
+                        <Image
+                          src={trash_icon}
+                          alt="게시글 삭제"
+                          width={20}
+                          height={20}
+                        />
+                      </button>
+                      {isModalOpen && (
+                        <Modal closeModal={closeModal}>
+                          <p>게시글을 삭제하시겠습니까?</p>
+                          <div className={s.modalBtnDiv}>
+                            <button type="button" onClick={closeModal}>
+                              남겨둘래요
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(post._id)}
+                            >
+                              삭제할래요
+                            </button>
+                          </div>
+                        </Modal>
+                      )}
+                    </li>
+                  ))}
+                </>
+              )}
             </>
           ) : (
             <>
-              {randomPosts.map((post) => (
-                <li key={post._id}>
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    width={70}
-                    height={100}
-                  />
-                  <div>
-                    <strong>{post.title}</strong>
-                    <p>{post.sentence}</p>
-                    <p className={s.randomPostUser}>{post.username}님</p>
-                  </div>
-                </li>
-              ))}
+              {!randomPosts || randomPosts.length === 0 ? (
+                <div className={s.noPosts}>
+                  <p>아직 게시글이 없어요</p>
+                </div>
+              ) : (
+                <>
+                  {randomPosts.map((post) => (
+                    <li key={post._id}>
+                      <Image
+                        src={post.thumbnail}
+                        alt={post.title}
+                        width={70}
+                        height={100}
+                      />
+                      <div>
+                        <strong>{post.title}</strong>
+                        <p>{post.sentence}</p>
+                        <p className={s.randomPostUser}>{post.username}님</p>
+                      </div>
+                    </li>
+                  ))}
+                </>
+              )}
             </>
           )}
         </ul>

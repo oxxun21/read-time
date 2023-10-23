@@ -23,6 +23,14 @@
   background-color: rgba(87, 87, 87, 0.581);
 }
 
+.postViewList li>img {
+  flex-grow: 0;
+}
+
+.postViewList li>div {
+  flex-grow: 2;
+}
+
 .postViewList li:last-of-type {
   margin-bottom: 0;
 }
@@ -33,15 +41,48 @@
 }
 
 .postViewList li p {
-  font-size: 12px;
   margin-top: 6px;
   line-height: 1.5;
+}
+
+.postViewList li p:first-of-type {
+  font-size: 14px;
 }
 
 .postViewList button {
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  flex-grow: 0;
+}
+
+.modalBtnDiv {
+  margin-top: 2rem;
+  display: flex;
+  gap: 8px;
+}
+
+.modalBtnDiv>button {
+  background-color: #181818;
+  width: 50%;
+  text-align: center;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.modalBtnDiv>button:last-of-type:hover {
+  color: rgb(255, 0, 0);
+}
+
+.randomPostUser {
+  font-size: 10px;
+  color: var(--gray300-color);
+}
+
+.loading {
+  margin-top: 20px;
+  color: var(--gray300-color);
+  font-size: 14px;
+  text-align: center;
 }

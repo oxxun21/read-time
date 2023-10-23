@@ -1,21 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import s from "./post.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 function Post() {
   const params = useSearchParams();
   const router = useRouter();
   const [sentence, setSentence] = useState("");
-
   const title = params.get("title");
   const thumbnail = params.get("thumbnail");
-
-  useEffect(() => {
-    console.log(title);
-    console.log(thumbnail);
-  }, []);
+  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +28,7 @@ function Post() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          username: session.user.name,
           thumbnail: thumbnail,
           title: title,
           sentence: sentence,
@@ -39,14 +36,14 @@ function Post() {
       });
 
       if (response.ok) {
-        alert("데이터가 성공적으로 저장되었습니다.");
+        alert("게시글 등록 완료!");
         router.push("/");
       } else {
-        alert("데이터 저장에 실패했습니다.");
+        alert("게시글 등록에 실패했습니다.");
       }
     } catch (error) {
       console.error("데이터 저장 오류:", error);
-      alert("데이터 저장 중 오류가 발생했습니다.");
+      alert("저장 중 오류가 발생했습니다.");
     }
   };
 

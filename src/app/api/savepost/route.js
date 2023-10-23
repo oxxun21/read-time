@@ -1,17 +1,14 @@
 import { connectDatabase, insertDocument } from "@/lib/helpers/db-util";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req) {
   const res = await req.json();
-
-  if (!res) {
-    return NextResponse.json({ message: "잘못된 요청입니다." });
-  }
-
   let client;
-
   try {
     client = await connectDatabase();
+
     await insertDocument(client, "bookPost", res);
     client.close();
 

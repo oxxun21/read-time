@@ -1,6 +1,7 @@
-import CustomLayout from "@/components/layout/customLayout";
 import "@/style/globals.css";
 import { Poppins } from "next/font/google";
+import AuthSession from "./authSesstion";
+import s from "./layout.module.css";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -12,8 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={poppins.className} suppressHydrationWarning={true}>
-        <CustomLayout>{children}</CustomLayout>
+      <body className={`${poppins.className} ${s.scrollbar}`} suppressHydrationWarning={true}>
+        <AuthSession>{children}</AuthSession>
+        <div id="portal"></div>
       </body>
     </html>
   );

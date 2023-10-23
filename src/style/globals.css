@@ -138,3 +138,7 @@ li {
 /* .react-calendar__tile--active {
   background-color: var(--sub-blue-color);
 } */
+
+.highlight {
+  background-color: var(--sub-blue-color);
+}

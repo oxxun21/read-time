@@ -9,6 +9,13 @@ export default function Calender() {
   const activeDate = moment(value).format("YYYY-MM-DD");
   const [isClient, setIsClient] = useState(false);
 
+  // 책 읽은 날 하이라이트 넣기
+  const mark = [
+    '2023-10-22',
+    '2023-10-18',
+  ]
+
+
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -25,6 +32,11 @@ export default function Calender() {
           // tileContent={addContent}
           showNeighboringMonth={false}
           formatDay={(locale, date) => moment(date).format("DD")}
+          tileClassName={({ date, view }) => {
+            if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+              return "highlight";
+            }
+          }}
         />
       ) : null}
     </section>

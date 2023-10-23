@@ -9,7 +9,6 @@
   --gray400-color: #777;
 }
 
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -64,3 +63,78 @@ img {
 li {
   list-style: none;
 }
+
+/* **************************************************************************************** */
+.react-calendar {
+  width: 100%;
+  background: none;
+  border: none;
+  /* line-height 수정 필요할거임 */
+  line-height: 3;
+}
+
+.react-calendar__navigation {
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  margin-bottom: 1rem;
+}
+
+.react-calendar__navigation button {
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.react-calendar__navigation__arrow {
+  flex-grow: 1;
+}
+
+.react-calendar__navigation span {
+  display: block;
+  text-align: center;
+}
+
+.react-calendar__navigation button:disabled {
+  color: var(--gray400-color);
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  transform: scale(1.1);
+}
+
+.react-calendar__month-view__weekdays__weekday,
+.react-calendar__month-view__weekdays__weekday--weekend {
+  text-align: center;
+}
+
+.react-calendar__month-view__weekdays__weekday>abbr,
+.react-calendar__month-view__weekdays__weekday--weekend>abbr {
+  text-decoration: none;
+}
+
+
+.react-calendar__tile,
+.react-calendar__month-view__days__day,
+.react-calendar__month-view__days__day--weekend {
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.react-calendar__tile--now {
+  background: var(--main-cinnamon-color);
+
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: var(--sub-cinnamon-color);
+}
+
+/* 날짜 선택된 경우 */
+/* .react-calendar__tile--active {
+  background-color: var(--sub-blue-color);
+} */

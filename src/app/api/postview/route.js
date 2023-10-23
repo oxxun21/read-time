@@ -7,7 +7,9 @@ export async function GET(req) {
   let client;
   try {
     client = await connectDatabase();
-    const posts = await getAllDocuments(client, "bookPost", {username: session.user.name});
+    const posts = await getAllDocuments(client, "bookPost", {
+      username: session.user.name,
+    });
     client.close();
 
     if (posts) {

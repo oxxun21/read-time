@@ -16,9 +16,11 @@ export default function LayoutNav() {
         <li>
           <Link href="/">Go Home</Link>
         </li>
-        <li>
-          <Link href="/timecheck">Time check</Link>
-        </li>
+        {session && (
+          <li>
+            <Link href="/timecheck">Time check</Link>
+          </li>
+        )}
         {session ? (
           <li>
             <button

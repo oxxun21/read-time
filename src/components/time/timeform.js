@@ -1,29 +1,51 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
+import { useSession } from "next-auth/react";
 
 export default function Timeform() {
   const [date, setDate] = useState(getCurrentDate());
-  const [hours, setHours] = useState();
-  const [minutes, setMinutes] = useState();
+  const hoursRef = useRef();
+  const minutesRef = useRef();
+  const { data: session } = useSession();
 
-  // input 숫자 유효성 로직 필요
-  const handleHoursChange = (e) => {
-    const newHours = parseInt(e.target.value, 10);
-    setHours(newHours);
-  };
-
-  const handleMinutesChange = (e) => {
-    const newMinutes = parseInt(e.target.value, 10);
-    setMinutes(newMinutes);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const hoursValue = hoursRef.current.value;
+    const minutesValue = minutesRef.current.value;
+    const formattedHours = hoursValue.toString().padStart(2, "0");
+    const formattedMinutes = minutesValue.toString().padStart(2, "0");
+
     // api
-    const formattedReadingTime = `${hours}시간 ${minutes}분`;
+    const formattedReadingTime = `${formattedHours}:${formattedMinutes}`;
     console.log("날짜:", date);
     console.log("독서 시간:", formattedReadingTime);
+
+    try {
+      const response = await fetch("/api/timerecord", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: session.user.name,
+          date: date,
+          time: formattedReadingTime,
+        }),
+      });
+
+      if (response.ok) {
+        alert("기록 완료!");
+      } else {
+        alert("기록에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("데이터 저장 오류:", error);
+      alert("저장 중 오류가 발생했습니다.");
+    } finally {
+      hoursRef.current.value = "";
+      minutesRef.current.value = "";
+    }
   };
 
   function getCurrentDate() {
@@ -44,8 +66,7 @@ export default function Timeform() {
             <input
               type="number"
               id="hours"
-              value={hours}
-              onChange={handleHoursChange}
+              ref={hoursRef}
               min="0"
               max="23"
               placeholder="0 ~ 23 입력"
@@ -56,8 +77,7 @@ export default function Timeform() {
             <input
               type="number"
               id="minutes"
-              value={minutes}
-              onChange={handleMinutesChange}
+              ref={minutesRef}
               min="0"
               max="59"
               placeholder="0 ~ 59 입력"

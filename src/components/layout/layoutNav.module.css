@@ -43,3 +43,22 @@
   color: #121212;
   margin-bottom: 1rem;
 }
+
+.logoutBtnDiv {
+  display: flex;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.logoutBtn {
+  cursor: pointer;
+  padding: 1rem;
+  width: 50%;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.logoutBtn:last-of-type:hover {
+  filter: brightness(150%);
+}

@@ -71,3 +71,9 @@
 .modalBtn:hover {
   filter: brightness(150%);
 }
+
+.searchViewContain>p.noBooks {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 2rem;
+}

@@ -1,9 +1,9 @@
 import React from "react";
-import s from "./searchSeaction.module.css";
+import s from "./searchSection.module.css";
 import Serach from "./serach";
 import UserInfo from "../user/userInfo";
 
-export default function SearchSeaction() {
+export default function SearchSection() {
   return (
     <section className={s.searchSection}>
       <UserInfo />

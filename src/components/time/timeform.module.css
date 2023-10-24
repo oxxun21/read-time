@@ -1,0 +1,41 @@
+.timeSection h2 {
+  font-size: 1.25rem;
+}
+
+.timeForm {
+  margin-top: 1.5rem;
+}
+
+.tiemInputDiv {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.timeInput {
+  margin-top: 1rem;
+  width: 50%;
+  display: flex;
+  gap: 8px;
+}
+
+.timeInput input {
+  padding: 10px 20px;
+  flex-grow: 2;
+  background-color: #282828;
+  border-radius: 4px;
+
+}
+
+.timeInput label {
+  padding: 10px 0;
+  flex-grow: 0;
+}
+
+.timeBtn {
+  cursor: pointer;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  padding: 10px 0 10px 2rem;
+}

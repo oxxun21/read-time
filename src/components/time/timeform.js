@@ -22,7 +22,6 @@ export default function Timeform() {
     if (formattedHours === "00" && formattedMinutes === "00") {
       alert("시간을 입력해주세요!");
     } else {
-      // api
       const formattedReadingTime = `${formattedHours}:${formattedMinutes}`;
       console.log("날짜:", date);
       console.log("독서 시간:", formattedReadingTime);

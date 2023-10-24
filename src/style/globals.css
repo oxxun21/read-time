@@ -149,11 +149,6 @@ li {
   background: var(--main-cinnamon-color);
 }
 
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-  background: var(--sub-cinnamon-color);
-}
-
 .react-calendar__tile--now.highlight>div>p {
   color: #fff;
 }

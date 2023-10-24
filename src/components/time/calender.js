@@ -7,13 +7,8 @@ import { useSession } from "next-auth/react";
 export default function Calender() {
   const curDate = new Date();
   const [value, onChange] = useState(curDate);
-  const [isClient, setIsClient] = useState(false);
   const [record, setRecord] = useState();
   const { data: session } = useSession();
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     if (session) {
@@ -32,7 +27,7 @@ export default function Calender() {
       };
       dataFetch();
     }
-  }, []);
+  }, [session]);
 
   let highlightList;
   if (record) {
@@ -69,31 +64,24 @@ export default function Calender() {
 
   return (
     <section>
-      {isClient ? (
-        <>
-          {record && (
-            <Calendar
-              locale="ko"
-              onChange={onChange}
-              value={value}
-              next2Label={null}
-              prev2Label={null}
-              tileContent={addContent}
-              showNeighboringMonth={false}
-              formatDay={(locale, date) => moment(date).format("DD")}
-              tileClassName={({ date, view }) => {
-                if (
-                  highlightList.find(
-                    (x) => x === moment(date).format("YYYY-MM-DD")
-                  )
-                ) {
-                  return "highlight";
-                }
-              }}
-            />
-          )}
-        </>
-      ) : null}
+      <Calendar
+        locale="ko"
+        onChange={onChange}
+        value={value}
+        next2Label={null}
+        prev2Label={null}
+        tileContent={addContent}
+        showNeighboringMonth={false}
+        formatDay={(locale, date) => moment(date).format("DD")}
+        tileClassName={({ date, view }) => {
+          if (
+            record &&
+            highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))
+          ) {
+            return "highlight";
+          }
+        }}
+      />
     </section>
   );
 }

@@ -69,8 +69,7 @@ li {
   width: 100%;
   background: none;
   border: none;
-  /* line-height 수정 필요할거임 */
-  line-height: 3;
+  line-height: 2.5;
 }
 
 .react-calendar__navigation {
@@ -115,7 +114,6 @@ li {
   text-decoration: none;
 }
 
-
 .react-calendar__tile,
 .react-calendar__month-view__days__day,
 .react-calendar__month-view__days__day--weekend {
@@ -124,9 +122,26 @@ li {
   transition: all 0.3s;
 }
 
+.react-calendar__tile {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.react-calendar__tile>abbr,
+.react-calendar__tile>div {
+  height: 50%;
+}
+
+.highlight>div>p {
+  color: var(--gray200-color);
+  font-size: 12px;
+}
+
 .react-calendar__tile--now {
   background: var(--main-cinnamon-color);
-
 }
 
 .react-calendar__tile--now:enabled:hover,
@@ -134,13 +149,6 @@ li {
   background: var(--sub-cinnamon-color);
 }
 
-/* 날짜 선택된 경우 */
-/* .react-calendar__tile--active {
-  background-color: var(--sub-blue-color);
-} */
-
-.highlight {
-  background-color: var(--sub-blue-color);
+.react-calendar__tile--now.highlight>div>p {
+  color: #fff;
 }
-
-/* TODO: 하이라이트 및 시간 표시 css 조정 */

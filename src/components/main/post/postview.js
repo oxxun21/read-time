@@ -11,6 +11,7 @@ function PostView() {
   const [randomPosts, setRandomPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deletePost, setDeletePost] = useState();
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -46,7 +47,8 @@ function PostView() {
     }
   }, [session]);
 
-  const openModal = () => {
+  const openModal = (postId) => {
+    setDeletePost(postId);
     setIsModalOpen(true);
   };
 
@@ -100,7 +102,7 @@ function PostView() {
                         <strong>{post.title}</strong>
                         <p>{post.sentence}</p>
                       </div>
-                      <button type="button" onClick={openModal}>
+                      <button type="button" onClick={() => openModal(post._id)}>
                         <Image
                           src={trash_icon}
                           alt="게시글 삭제"
@@ -108,25 +110,25 @@ function PostView() {
                           height={20}
                         />
                       </button>
-                      {isModalOpen && (
-                        <Modal closeModal={closeModal}>
-                          <p>게시글을 삭제하시겠습니까?</p>
-                          <div className={s.modalBtnDiv}>
-                            <button type="button" onClick={closeModal}>
-                              남겨둘래요
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleDelete(post._id)}
-                            >
-                              삭제할래요
-                            </button>
-                          </div>
-                        </Modal>
-                      )}
                     </li>
                   ))}
                 </>
+              )}
+              {isModalOpen && (
+                <Modal closeModal={closeModal}>
+                  <p>게시글을 삭제하시겠습니까?</p>
+                  <div className={s.modalBtnDiv}>
+                    <button type="button" onClick={closeModal}>
+                      남겨둘래요
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(deletePost)}
+                    >
+                      삭제할래요
+                    </button>
+                  </div>
+                </Modal>
               )}
             </>
           ) : (

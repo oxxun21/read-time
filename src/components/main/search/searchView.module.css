@@ -35,7 +35,7 @@
   order: 2;
   font-weight: 500;
   font-size: 14px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .bookInfo p {
@@ -44,7 +44,7 @@
   color: var(--gray200-color);
   line-height: 1.5;
   text-align: justify;
-  margin-top: 5px;
+  margin-top: 8px;
   cursor: pointer;
 }
 
@@ -59,10 +59,15 @@
 .modalBtn {
   display: block;
   margin-top: 1.5rem;
-  border: 1px solid var(--gray400-color);
+  background-color: #1c1c1c;
   width: 100%;
   padding: 1rem;
   box-sizing: border-box;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modalBtn:hover {
+  filter: brightness(150%);
 }

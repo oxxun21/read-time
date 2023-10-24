@@ -36,17 +36,19 @@
 }
 
 .postViewList li strong {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .postViewList li p {
-  margin-top: 6px;
+  margin-top: 8px;
   line-height: 1.5;
+  font-size: 12px;
 }
 
 .postViewList li p:first-of-type {
-  font-size: 13px;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .postViewList button {

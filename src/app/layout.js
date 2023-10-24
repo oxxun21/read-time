@@ -1,9 +1,11 @@
 import "@/style/globals.css";
-import { Poppins } from "next/font/google";
 import AuthSession from "./authSesstion";
 import s from "./layout.module.css";
+import localFont from "next/font/local";
 
-const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+export const Pretendard = localFont({
+  src: "./fonts/Pretendard-Regular.woff2",
+});
 
 export const metadata = {
   title: "Read Time",
@@ -13,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={`${poppins.className} ${s.scrollbar}`} suppressHydrationWarning={true}>
+      <body
+        className={`${Pretendard.className} ${s.scrollbar}`}
+        suppressHydrationWarning={true}
+      >
         <AuthSession>{children}</AuthSession>
         <div id="portal"></div>
       </body>

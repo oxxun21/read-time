@@ -54,6 +54,17 @@
   outline: 1px solid var(--gray200-color);
 }
 
+.align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posting p {
+  font-size: 14px;
+  padding-bottom: 1rem;
+}
+
 .posting button {
   margin-left: auto;
   width: 4rem;

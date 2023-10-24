@@ -92,3 +92,24 @@
   color: var(--gray400-color);
   font-size: 14px;
 }
+
+
+@media screen and (max-width: 480px) {
+  .postViewList li {
+    gap: 10px;
+    padding: 12px 10px;
+    padding-left: 1rem;
+  }
+
+  .postViewList li strong {
+    font-size: 14px;
+  }
+
+  .postViewList li p {
+    font-size: 10px;
+  }
+
+  .postViewList li p:first-of-type {
+    font-size: 12px;
+  }
+}

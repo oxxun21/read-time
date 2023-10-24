@@ -72,6 +72,11 @@ li {
   line-height: 2.5;
 }
 
+.react-calendar__viewContainer,
+.react-calendar__navigation__label {
+  pointer-events: none;
+}
+
 .react-calendar__navigation {
   height: 44px;
   display: flex;
@@ -142,11 +147,6 @@ li {
 
 .react-calendar__tile--now {
   background: var(--main-cinnamon-color);
-}
-
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-  background: var(--sub-cinnamon-color);
 }
 
 .react-calendar__tile--now.highlight>div>p {

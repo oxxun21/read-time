@@ -9,7 +9,7 @@ export const Pretendard = localFont({
 
 export const metadata = {
   title: "Read Time",
-  description: "다양한 책을 알아보고 독서 시간을 체크하세요",
+  description: "기억하고 싶은 책을 기록하고 독서 시간을 체크하세요",
 };
 
 export default function RootLayout({ children }) {

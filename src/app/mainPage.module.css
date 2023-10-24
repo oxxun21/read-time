@@ -6,3 +6,14 @@
 .contain section {
   width: 50%;
 }
+
+@media screen and (max-width: 768px) {
+  .contain {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contain section {
+    width: 100%;
+  }
+}

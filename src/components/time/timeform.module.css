@@ -42,3 +42,13 @@
   margin-left: auto;
   padding: 10px 0 10px 2rem;
 }
+
+@media screen and (max-width: 480px) {
+  .timeSection h2 {
+    font-size: 1rem;
+  }
+
+  .timeForm p {
+    font-size: 14px;
+  }
+}

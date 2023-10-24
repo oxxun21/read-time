@@ -29,8 +29,12 @@ export default function SearchView({ searchResult }) {
 
   return (
     <article className={s.searchViewContain}>
-      {searchResult && <p>책 표지를 눌러 글을 남겨봐요.</p>}
-      {searchResult && (
+      {!searchResult || searchResult.length === 0 || (
+        <p>책 표지를 눌러 글을 남겨봐요.</p>
+      )}
+      {!searchResult || searchResult.length === 0 ? (
+        <p className={s.noBooks}>오늘 기억하고 싶은 문장은 무엇인가요?</p>
+      ) : (
         <ul>
           {searchResult.map((book, idx) => (
             <li key={book.isbn} className={s.bookInfo}>

@@ -7,3 +7,22 @@
 .contain section {
   width: 50%;
 }
+
+@media screen and (max-width: 768px) {
+  .contain {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .contain section {
+    width: 100%;
+  }
+
+  .contain>section:first-of-type {
+    order: 2;
+  }
+
+  .contain>section:last-of-type {
+    order: 1;
+  }
+}

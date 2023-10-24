@@ -71,3 +71,19 @@
 .modalBtn:hover {
   filter: brightness(150%);
 }
+
+.searchViewContain>p.noBooks {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .searchViewContain {
+    margin-bottom: 2rem;
+  }
+
+  .searchViewContain ul {
+    gap: 3rem 2rem;
+  }
+}

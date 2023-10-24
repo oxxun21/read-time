@@ -15,3 +15,23 @@
   box-shadow: none;
   background-color: transparent;
 }
+
+@media screen and (max-width: 768px) {
+  .scrollbar {
+    overflow: auto;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: initial;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: initial;
+    border-radius: initial;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    box-shadow: initial;
+    background-color: initial;
+  }
+}

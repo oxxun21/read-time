@@ -24,7 +24,6 @@ export default function Calender() {
             credentials: "include",
           });
           const data = await response.json();
-          console.log(data);
           setRecord(data);
           return data;
         } catch (error) {

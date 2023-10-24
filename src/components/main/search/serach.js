@@ -27,7 +27,6 @@ export default function Serach() {
       if (response.ok) {
         const resJson = await response.json();
         const filterData = resJson.documents.filter((item) => item.thumbnail);
-        console.log(filterData);
         setSearchResult(filterData);
       } else {
         console.error("API 호출 실패:", response.status);

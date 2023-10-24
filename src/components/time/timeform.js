@@ -16,15 +16,10 @@ export default function Timeform() {
     const formattedHours = hoursValue.toString().padStart(2, "0");
     const formattedMinutes = minutesValue.toString().padStart(2, "0");
 
-    console.log(formattedHours);
-    console.log(formattedMinutes);
-
     if (formattedHours === "00" && formattedMinutes === "00") {
       alert("시간을 입력해주세요!");
     } else {
       const formattedReadingTime = `${formattedHours}:${formattedMinutes}`;
-      console.log("날짜:", date);
-      console.log("독서 시간:", formattedReadingTime);
 
       try {
         const response = await fetch("/api/timerecord", {

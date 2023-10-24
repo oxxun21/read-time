@@ -5,6 +5,24 @@
   font-style: normal;
 }
 
+.scrollbar {
+  overflow-y: overlay;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: var(--gray200-color);
+  border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .postForm {
   width: 100%;
   margin-top: 20px;

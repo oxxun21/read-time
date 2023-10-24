@@ -57,6 +57,7 @@ function Post() {
           value={sentence}
           onChange={(e) => setSentence(e.target.value)}
           maxLength="290"
+          className={s.scrollbar}
         />
         <div className={s.align}>
           <p>{sentence.length} / 290 글자</p>

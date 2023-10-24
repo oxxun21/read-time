@@ -72,6 +72,11 @@ li {
   line-height: 2.5;
 }
 
+.react-calendar__viewContainer,
+.react-calendar__navigation__label {
+  pointer-events: none;
+}
+
 .react-calendar__navigation {
   height: 44px;
   display: flex;

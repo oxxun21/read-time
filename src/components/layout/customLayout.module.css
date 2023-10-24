@@ -43,3 +43,27 @@
   margin-top: 10px;
   color: var(--gray200-color);
 }
+
+@media screen and (max-width: 480px) {
+  .header {
+    height: 3.5rem;
+    padding: 0 18px;
+  }
+
+  .header h1 {
+    height: 100%;
+  }
+
+  .header img {
+    width: 6rem;
+    height: 100%;
+  }
+
+  .main {
+    padding: 24px 18px;
+  }
+
+  .footer {
+    padding: 18px;
+  }
+}

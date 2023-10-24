@@ -58,3 +58,18 @@
 .logoutBtn:last-of-type:hover {
   filter: brightness(150%);
 }
+
+@media screen and (max-width: 480px) {
+  .nav ul li:first-of-type {
+    display: none;
+  }
+
+  .nav li a,
+  .nav li button {
+    font-size: 14px;
+  }
+
+  .nav li button {
+    padding-right: 0;
+  }
+}

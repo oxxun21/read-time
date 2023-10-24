@@ -91,3 +91,16 @@
   text-align: right;
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 768px) {
+  .postForm {
+    flex-direction: column;
+    padding: 0;
+    gap: 3rem;
+  }
+
+  .posting {
+    width: 100%;
+  }
+}

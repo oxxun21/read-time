@@ -33,7 +33,7 @@ export default function Calender() {
       };
       dataFetch();
     }
-  }, [session]);
+  }, []);
 
   let highlightList;
   if (record) {
@@ -43,11 +43,27 @@ export default function Calender() {
   const addContent = ({ date }) => {
     const contents = [];
     if (record) {
-      record.forEach((item) => {
-        if (item.date === moment(date).format("YYYY-MM-DD")) {
-          contents.push(<p>{item.time}</p>);
-        }
-      });
+      const dateStr = moment(date).format("YYYY-MM-DD");
+      const itemsForDate = record.filter((item) => item.date === dateStr);
+
+      if (itemsForDate.length > 0) {
+        const totalMinutes = itemsForDate.reduce((total, item) => {
+          const [hours, minutes] = item.time.split(":");
+          return total + parseInt(hours) * 60 + parseInt(minutes);
+        }, 0);
+
+        const totalHours = Math.floor(totalMinutes / 60);
+        const remainingMinutes = totalMinutes % 60;
+
+        const formattedHours = totalHours.toString().padStart(2, "0");
+        const formattedMinutes = remainingMinutes.toString().padStart(2, "0");
+
+        contents.push(
+          <p>
+            {formattedHours}:{formattedMinutes}
+          </p>
+        );
+      }
     }
     return <div>{contents}</div>;
   };

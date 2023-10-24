@@ -43,7 +43,7 @@
 .logoutBtnDiv {
   display: flex;
   gap: 8px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .logoutBtn {

@@ -1,5 +1,8 @@
 .timeSection h2 {
   font-size: 1.25rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #777;
 }
 
 .timeForm {

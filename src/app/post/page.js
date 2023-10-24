@@ -49,15 +49,19 @@ function Post() {
 
   return (
     <form className={s.postForm} onSubmit={handleSubmit}>
-      <Image src={thumbnail} alt={title} width={120} height={160} />
+      <Image src={thumbnail} alt={title} width={110} height={160} />
       <div className={s.posting}>
         <strong>{title}</strong>
         <textarea
-          placeholder="기억에 남기고 싶은 문장을 적어주세요"
+          placeholder="기억에 남기고 싶은 문장을 적어주세요 (290자 까지 가능합니다.)"
           value={sentence}
           onChange={(e) => setSentence(e.target.value)}
+          maxLength="290"
         />
-        <button type="submit">등록하기</button>
+        <div className={s.align}>
+          <p>{sentence.length} / 290 글자</p>
+          <button type="submit">등록하기</button>
+        </div>
       </div>
     </form>
   );

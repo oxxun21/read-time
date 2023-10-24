@@ -33,7 +33,7 @@ export default function SearchView({ searchResult }) {
         <p>책 표지를 눌러 글을 남겨봐요.</p>
       )}
       {!searchResult || searchResult.length === 0 ? (
-        <p className={s.noBooks}>검색 결과가 존재하지 않습니다.</p>
+        <p className={s.noBooks}>오늘 기억하고 싶은 문장은 무엇인가요?</p>
       ) : (
         <ul>
           {searchResult.map((book, idx) => (

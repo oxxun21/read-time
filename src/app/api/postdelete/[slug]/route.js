@@ -1,4 +1,4 @@
-import { connectDatabase } from "@/lib/helpers/db-util";
+import { connectDatabase, deleteDocument } from "@/lib/helpers/db-util";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
@@ -13,8 +13,8 @@ export async function DELETE(req) {
 
   try {
     client = await connectDatabase();
-    const db = client.db();
-    await db.collection("bookPost").deleteOne({ _id: new ObjectId(postId) });
+    await deleteDocument(client, "bookPost", { _id: new ObjectId(postId) });
+
     return NextResponse.json("성공");
   } catch (e) {
     console.error(e);

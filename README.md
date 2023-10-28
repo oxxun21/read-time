@@ -41,9 +41,9 @@
 
 - 로그인 후 접근 가능한 페이지이며, 독서 시간을 기록할 수 있습니다.
 
-<img width="300px" src="https://github.com/oxxun21/read-time/assets/98699927/cf97b58e-1377-44f4-824c-5cd4d30f7f4a" />
-<img width="300px" src="https://github.com/oxxun21/read-time/assets/98699927/247fda31-5755-44ab-8c57-68ded82ae49c" />
-<img width="300px" src="https://github.com/oxxun21/read-time/assets/98699927/b07eca98-531c-4e2f-8eca-4a49bd08b683" />
+<img width="200px" src="https://github.com/oxxun21/read-time/assets/98699927/cf97b58e-1377-44f4-824c-5cd4d30f7f4a" />
+<img width="200px" src="https://github.com/oxxun21/read-time/assets/98699927/247fda31-5755-44ab-8c57-68ded82ae49c" />
+<img width="200px" src="https://github.com/oxxun21/read-time/assets/98699927/b07eca98-531c-4e2f-8eca-4a49bd08b683" />
 
 - 모바일로도 간편하게 접근이 가능합니다.
 

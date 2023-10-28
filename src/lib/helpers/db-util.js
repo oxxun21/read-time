@@ -11,6 +11,12 @@ export async function insertDocument(client, collection, document) {
   return result;
 }
 
+export async function updateDocument(client, collection, query, update) {
+  const db = client.db();
+  const result = await db.collection(collection).updateOne(query, update);
+  return result;
+}
+
 export async function getAllDocuments(client, collection, username) {
   const db = client.db();
   const documents = await db

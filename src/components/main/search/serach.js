@@ -8,7 +8,6 @@ import SearchView from "./searchView";
 export default function Serach() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-  const [loading, setLoading] = useState(true);
   const rest_key = process.env.RESTAPI_KEY;
 
   const handleSearch = async () => {
@@ -34,7 +33,6 @@ export default function Serach() {
     } catch (error) {
       console.error("API 호출 실패:", error);
     } finally {
-      setLoading(false);
       setSearch("");
     }
   };

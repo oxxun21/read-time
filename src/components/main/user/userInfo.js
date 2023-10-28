@@ -1,11 +1,10 @@
-"use client";
-import { useSession } from "next-auth/react";
 import React from "react";
 import Image from "next/image";
 import s from "./userInfo.module.css";
+import { getServerSession } from "next-auth";
 
-export default function UserInfo() {
-  const { data: session } = useSession();
+export default async function UserInfo() {
+  const session = await getServerSession();
   return (
     <>
       {session ? (

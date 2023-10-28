@@ -8,20 +8,21 @@ export default function Calender() {
   const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState();
 
+  const dataFetch = async () => {
+    try {
+      const response = await fetch("/api/getrecord", {
+        cache: "no-store",
+        credentials: "include",
+      });
+      const data = await response.json();
+      setRecord(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const dataFetch = async () => {
-      try {
-        const response = await fetch("/api/getrecord", {
-          cache: "no-store",
-          credentials: "include",
-        });
-        const data = await response.json();
-        setRecord(data);
-        return data;
-      } catch (error) {
-        console.error(error);
-      }
-    };
     dataFetch();
   }, []);
 
@@ -90,6 +91,7 @@ export default function Calender() {
               )
             : []
         }
+        dataFetch={dataFetch}
       />
     </>
   );

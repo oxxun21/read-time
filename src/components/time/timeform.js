@@ -4,7 +4,7 @@ import s from "./timeform.module.css";
 import { useSession } from "next-auth/react";
 import moment from "moment";
 
-export default function Timeform({ value, record }) {
+export default function Timeform({ value, record, dataFetch }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
   const { data: session } = useSession();
@@ -20,8 +20,8 @@ export default function Timeform({ value, record }) {
     if (formattedHours === "00" && formattedMinutes === "00") {
       alert("시간을 입력해주세요!");
       return;
-    }
-
+    } 
+      
     if (!record || record.length === 0) {
       try {
         const response = await fetch("/api/timerecord", {
@@ -38,6 +38,7 @@ export default function Timeform({ value, record }) {
 
         if (response.ok) {
           alert("기록 완료!");
+          dataFetch();
         }
       } catch (error) {
         console.error("데이터 저장 오류:", error);
@@ -58,6 +59,7 @@ export default function Timeform({ value, record }) {
 
         if (response.ok) {
           alert("수정 완료!");
+          dataFetch();
         }
       } catch (e) {
         console.error("데이터 저장 오류:", e);
@@ -79,6 +81,7 @@ export default function Timeform({ value, record }) {
 
       if (response.ok) {
         alert("삭제 완료!");
+        dataFetch();
       } else {
         alert("삭제에 실패했습니다.");
       }

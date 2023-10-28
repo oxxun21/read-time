@@ -37,3 +37,9 @@ export async function getRandomDocuments(client, collection) {
     .toArray();
   return documents;
 }
+
+export async function deleteDocument(client, collection, query) {
+  const db = client.db();
+  const result = await db.collection(collection).deleteOne(query);
+  return result;
+}

@@ -93,7 +93,9 @@ export default function Calender() {
         <TimeEditModal
           setClickDay={setClickDay}
           value={value}
-          record={record}
+          record={record.filter(
+            (item) => item.date === moment(value).format("YYYY-MM-DD")
+          )}
         />
       )}
     </section>

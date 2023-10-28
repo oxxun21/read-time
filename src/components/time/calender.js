@@ -2,32 +2,28 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
-import { useSession } from "next-auth/react";
+import Timeform from "./timeform";
 
 export default function Calender() {
-  const curDate = new Date();
-  const [value, onChange] = useState(curDate);
+  const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState();
-  const { data: session } = useSession();
 
   useEffect(() => {
-    if (session) {
-      const dataFetch = async () => {
-        try {
-          const response = await fetch("/api/getrecord", {
-            cache: "no-store",
-            credentials: "include",
-          });
-          const data = await response.json();
-          setRecord(data);
-          return data;
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      dataFetch();
-    }
-  }, [session]);
+    const dataFetch = async () => {
+      try {
+        const response = await fetch("/api/getrecord", {
+          cache: "no-store",
+          credentials: "include",
+        });
+        const data = await response.json();
+        setRecord(data);
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    dataFetch();
+  }, []);
 
   let highlightList;
   if (record) {
@@ -59,29 +55,42 @@ export default function Calender() {
         );
       }
     }
+
     return <div>{contents}</div>;
   };
 
   return (
-    <section>
-      <Calendar
-        locale="ko"
-        onChange={onChange}
+    <>
+      <section>
+        <Calendar
+          locale="ko"
+          onChange={onChange}
+          value={value}
+          next2Label={null}
+          prev2Label={null}
+          tileContent={addContent}
+          showNeighboringMonth={false}
+          formatDay={(locale, date) => moment(date).format("DD")}
+          tileClassName={({ date, view }) => {
+            if (
+              record &&
+              highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))
+            ) {
+              return "highlight";
+            }
+          }}
+        />
+      </section>
+      <Timeform
         value={value}
-        next2Label={null}
-        prev2Label={null}
-        tileContent={addContent}
-        showNeighboringMonth={false}
-        formatDay={(locale, date) => moment(date).format("DD")}
-        tileClassName={({ date, view }) => {
-          if (
-            record &&
-            highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))
-          ) {
-            return "highlight";
-          }
-        }}
+        record={
+          record
+            ? record.filter(
+                (item) => item.date === moment(value).format("YYYY-MM-DD")
+              )
+            : []
+        }
       />
-    </section>
+    </>
   );
 }

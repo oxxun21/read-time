@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
 import { useSession } from "next-auth/react";
+import TimeEditModal from "./timeeditmodal";
+import s from "./calender.module.css";
 
 export default function Calender() {
-  const curDate = new Date();
-  const [value, onChange] = useState(curDate);
+  const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState();
+  const [clickDay, setClickDay] = useState(false);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -59,11 +61,15 @@ export default function Calender() {
         );
       }
     }
+
     return <div>{contents}</div>;
   };
 
   return (
     <section>
+      <p className={s.info}>
+        시간 수정과 삭제는 해당 날짜를 눌러 진행해주세요.
+      </p>
       <Calendar
         locale="ko"
         onChange={onChange}
@@ -72,6 +78,7 @@ export default function Calender() {
         prev2Label={null}
         tileContent={addContent}
         showNeighboringMonth={false}
+        onClickDay={() => setClickDay(true)}
         formatDay={(locale, date) => moment(date).format("DD")}
         tileClassName={({ date, view }) => {
           if (
@@ -82,6 +89,13 @@ export default function Calender() {
           }
         }}
       />
+      {clickDay && (
+        <TimeEditModal
+          setClickDay={setClickDay}
+          value={value}
+          record={record}
+        />
+      )}
     </section>
   );
 }

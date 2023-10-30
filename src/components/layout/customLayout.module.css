@@ -29,6 +29,7 @@
 
 .main {
   padding: 2rem 3rem;
+  flex-grow: 2;
 }
 
 .footer {

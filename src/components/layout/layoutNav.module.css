@@ -21,12 +21,6 @@
   font-size: 1rem;
 }
 
-.loginP {
-  margin-bottom: 10px;
-  font-size: 12px;
-  color: var(--gray200-color);
-}
-
 .loginBtn {
   background: url("../../assets//kakao_icon.webp") no-repeat 1rem/10%;
   background-color: #FDDC3F;

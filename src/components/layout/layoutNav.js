@@ -60,9 +60,6 @@ export default function LayoutNav() {
           >
             Kakao 로그인
           </button>
-          <p className={s.loginP}>
-            이메일도 동의해주셔야 정상적인 사용이 가능합니다ㅠ.ㅠ
-          </p>
         </Modal>
       )}
       {logoutModalOpen && (

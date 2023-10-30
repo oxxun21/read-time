@@ -10,11 +10,11 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async signIn(user, account, profile) {
+    async signIn({ user, account, profile }) {
       const client = await connectDatabase();
       const db = client.db();
       const usersCollection = db.collection("users");
-      const existingUser = await usersCollection.findOne({ email: user.email });
+      const existingUser = await usersCollection.findOne({ id: user.id });
       if (!existingUser) {
         await usersCollection.insertOne(user);
       }

@@ -6,6 +6,7 @@ import Image from "next/image";
 export default function Randomposts() {
   const [randomPosts, setRandomPosts] = useState([]);
 
+  // 함수 분리해서 ssr로 가능
   useEffect(() => {
     const dataRandomFetch = async () => {
       try {

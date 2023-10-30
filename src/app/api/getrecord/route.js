@@ -3,10 +3,14 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
-  const session = await getServerSession({ req });
+  // const session = await getServerSession({ req });
+  const session = await getServerSession();
+  console.log("!!!!!!!!!!!!!!",session);
   let client;
   try {
     client = await connectDatabase();
+
+    //
     const timeRecord = await getAllDocuments(client, "time", {
       username: session.user.name,
     });

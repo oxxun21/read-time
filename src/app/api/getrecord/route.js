@@ -1,18 +1,17 @@
 import { connectDatabase, getAllDocuments } from "@/lib/helpers/db-util";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
 
-export async function GET(req) {
-  // const session = await getServerSession({ req });
-  const session = await getServerSession();
-  console.log("!!!!!!!!!!!!!!",session);
+export async function GET() {
+  const session = await getServerSession(authOptions);
+
   let client;
   try {
     client = await connectDatabase();
 
-    //
     const timeRecord = await getAllDocuments(client, "time", {
-      username: session.user.name,
+      id: session.id,
     });
     client.close();
 

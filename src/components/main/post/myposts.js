@@ -15,7 +15,6 @@ export default function Myposts() {
       try {
         const response = await fetch("/api/postview", {
           cache: "no-store",
-          credentials: "include",
         });
         const data = await response.json();
         setPosts(data);

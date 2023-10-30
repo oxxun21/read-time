@@ -1,15 +1,24 @@
 import { connectDatabase, insertDocument } from "@/lib/helpers/db-util";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   const res = await req.json();
+  const session = await getServerSession(authOptions);
   let client;
   try {
     client = await connectDatabase();
 
-    await insertDocument(client, "time", res);
+    const dataToInsert = {
+      ...res,
+      username: session.user.name,
+      id: session.id,
+    };
+
+    await insertDocument(client, "time", dataToInsert);
     client.close();
 
     if (res) {

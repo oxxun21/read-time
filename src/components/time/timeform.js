@@ -1,13 +1,11 @@
 "use client";
 import React, { useRef } from "react";
 import s from "./timeform.module.css";
-import { useSession } from "next-auth/react";
 import moment from "moment";
 
 export default function Timeform({ value, record, dataFetch }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
-  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,8 +18,8 @@ export default function Timeform({ value, record, dataFetch }) {
     if (formattedHours === "00" && formattedMinutes === "00") {
       alert("시간을 입력해주세요!");
       return;
-    } 
-      
+    }
+
     if (!record || record.length === 0) {
       try {
         const response = await fetch("/api/timerecord", {
@@ -30,7 +28,6 @@ export default function Timeform({ value, record, dataFetch }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: session.user.name,
             date: moment(value).format("YYYY-MM-DD"),
             time: formattedReadingTime,
           }),

@@ -1,6 +1,6 @@
 import s from "./mainPage.module.css";
 import SearchSection from "@/components/main/search/searchSection";
-import PostsSection from "@/components/main/post/postsSection";
+import PostsSection from "@/components/main/post/postssection";
 
 export const metadata = {
   title: "Read Time | Home",

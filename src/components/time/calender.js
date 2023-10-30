@@ -12,7 +12,6 @@ export default function Calender() {
     try {
       const response = await fetch("/api/getrecord", {
         cache: "no-store",
-        credentials: "include",
       });
       const data = await response.json();
       setRecord(data);

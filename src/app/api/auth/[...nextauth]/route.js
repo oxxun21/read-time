@@ -1,10 +1,8 @@
 import { connectDatabase } from "@/lib/helpers/db-util";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import KakaoProvider from "next-auth/providers/kakao";
 
 export const authOptions = {
-  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID,
@@ -13,7 +11,6 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log(user);
       const client = await connectDatabase();
       const db = client.db();
       const usersCollection = db.collection("users");

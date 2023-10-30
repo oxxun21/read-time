@@ -13,7 +13,7 @@ export default function Myposts() {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const response = await fetch("/api/postview", {
+        const response = await fetch("/api/postsview", {
           cache: "no-store",
         });
         const data = await response.json();

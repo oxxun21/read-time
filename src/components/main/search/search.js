@@ -5,7 +5,7 @@ import Image from "next/image";
 import search_icon from "@/assets/search_icon.svg";
 import SearchView from "./searchView";
 
-export default function Serach() {
+export default function Search() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const rest_key = process.env.RESTAPI_KEY;

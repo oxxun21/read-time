@@ -16,7 +16,7 @@ export default function SearchView({ searchResult }) {
   };
 
   const handleModal = () => {
-    setIsModalOpen(true);
+    setIsModalOpen((prev) => !prev);
   };
 
   const handleContentClick = (idx) => {

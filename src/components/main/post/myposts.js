@@ -27,7 +27,7 @@ export default function Myposts() {
 
   const openModal = (postId) => {
     setDeletePost(postId);
-    setIsModalOpen(true);
+    setIsModalOpen((prev) => !prev);
   };
 
   const closeModal = () => {

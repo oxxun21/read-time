@@ -34,25 +34,11 @@ export default function Calender() {
     const contents = [];
     if (record) {
       const dateStr = moment(date).format("YYYY-MM-DD");
-      const itemsForDate = record.filter((item) => item.date === dateStr);
-
-      if (itemsForDate.length > 0) {
-        const totalMinutes = itemsForDate.reduce((total, item) => {
-          const [hours, minutes] = item.time.split(":");
-          return total + parseInt(hours) * 60 + parseInt(minutes);
-        }, 0);
-
-        const totalHours = Math.floor(totalMinutes / 60);
-        const remainingMinutes = totalMinutes % 60;
-
-        const formattedHours = totalHours.toString().padStart(2, "0");
-        const formattedMinutes = remainingMinutes.toString().padStart(2, "0");
-
-        contents.push(
-          <p>
-            {formattedHours}:{formattedMinutes}
-          </p>
-        );
+  
+      for (const item of record) {
+        if (item.date === dateStr) {
+          contents.push(<p key={item._id}>{item.time}</p>);
+        }
       }
     }
 
@@ -72,10 +58,7 @@ export default function Calender() {
           showNeighboringMonth={false}
           formatDay={(locale, date) => moment(date).format("DD")}
           tileClassName={({ date, view }) => {
-            if (
-              record &&
-              highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))
-            ) {
+            if (record && highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
               return "highlight";
             }
           }}
@@ -83,13 +66,7 @@ export default function Calender() {
       </section>
       <Timeform
         value={value}
-        record={
-          record
-            ? record.filter(
-                (item) => item.date === moment(value).format("YYYY-MM-DD")
-              )
-            : []
-        }
+        record={record ? record.filter((item) => item.date === moment(value).format("YYYY-MM-DD")) : []}
         dataFetch={dataFetch}
       />
     </>

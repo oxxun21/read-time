@@ -12,7 +12,7 @@ async function dataFetch() {
     const session = await getServerSession(authOptions);
     const sessionId = session.id;
     const url = BASE_URL();
-    const response = await fetch(`${url}/api/postsview`, {
+    const response = await fetch(`https://read-time.vercel.app/api/postsview`, {
       cache: "no-store",
       headers: headers(),
     });

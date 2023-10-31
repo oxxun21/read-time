@@ -3,16 +3,21 @@ import s from "./postview.module.css";
 import Image from "next/image";
 import PostDeleteBtn from "./postdeletebtn";
 import { headers } from "next/headers";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { BASE_URL } from "@/lib/BASE_URL";
 
 async function dataFetch() {
   try {
-    const host = headers().get("host");
-    const protocal = process.env.NODE_ENV === "development" ? "http" : "https";
-    const response = await fetch(`${protocal}://${host}/api/postsview`, {
+    const session = await getServerSession(authOptions);
+    const sessionId = session.id;
+    const url = BASE_URL();
+    const response = await fetch(`${url}/api/postsview`, {
       cache: "no-store",
       headers: headers(),
     });
-    const data = await response.json();
+    const resjson = await response.json();
+    const data = resjson.filter((i) => i.id === sessionId);
     return data;
   } catch (error) {
     console.error(error);
@@ -20,7 +25,6 @@ async function dataFetch() {
 }
 export default async function Myposts() {
   const posts = await dataFetch();
-
   return (
     <>
       {!posts || posts.length === 0 ? (

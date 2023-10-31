@@ -1,11 +1,12 @@
 import React from "react";
 import s from "./postview.module.css";
 import Image from "next/image";
-import {BASE_URL} from "@/lib/BASE_URL"
+import { BASE_URL } from "@/lib/BASE_URL"
 
 async function dataRandomFetch() {
+  const url = BASE_URL();
   try {
-    const response = await fetch(`${BASE_URL}/api/randompostview`);
+    const response = await fetch(`${url}/api/randompostview`);
     const data = await response.json();
     return data;
   } catch (error) {

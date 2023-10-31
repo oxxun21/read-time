@@ -7,9 +7,7 @@ async function dataRandomFetch() {
   const url = BASE_URL();
   try {
     const response = await fetch(`${url}/api/randompostview`);
-    console.log(response);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);

@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET() {
-  // myposts가 client일 땐 되고 왜 server로 하니까 안되지?
   const session = await getServerSession(authOptions);
 
   let client;

@@ -1,56 +1,27 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./postview.module.css";
 import Image from "next/image";
-import trash_icon from "@/assets/trash_icon.png";
-import Modal from "@/components/modal/modal";
+import { headers } from "next/headers";
+import MyPostDeleteBtn from "./mypostdeletebtn";
 
-export default function Myposts() {
-  const [posts, setPosts] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deletePost, setDeletePost] = useState();
+async function dataFetch() {
+  try {
+    const host = headers().get("host");
+    const protocal = process.env.NODE_ENV === "development" ? "http" : "https";
+    let res = await fetch(`${protocal}://${host}/api/postsview`, {
+      cache: "no-store",
+      headers: headers(),
+    });
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-  useEffect(() => {
-    const dataFetch = async () => {
-      try {
-        const response = await fetch("/api/postsview", {
-          cache: "no-store",
-        });
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    dataFetch();
-  }, []);
-
-  const openModal = (postId) => {
-    setDeletePost(postId);
-    setIsModalOpen((prev) => !prev);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleDelete = async (postId) => {
-    try {
-      const response = await fetch(`/api/postdelete/${postId}`, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        const updatedPosts = posts.filter((post) => post._id !== postId);
-        setPosts(updatedPosts);
-        console.log("삭제 성공");
-      } else {
-        console.error("게시물 삭제 실패");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    setIsModalOpen(false);
-  };
+export default async function Myposts() {
+  const posts = await dataFetch();
+  console.log(posts);
 
   return (
     <>
@@ -72,30 +43,10 @@ export default function Myposts() {
                 <strong>{post.title}</strong>
                 <p>{post.sentence}</p>
               </div>
-              <button type="button" onClick={() => openModal(post._id)}>
-                <Image
-                  src={trash_icon}
-                  alt="게시글 삭제"
-                  width={20}
-                  height={20}
-                />
-              </button>
+              <MyPostDeleteBtn post={post} />
             </li>
           ))}
         </>
-      )}
-      {isModalOpen && (
-        <Modal closeModal={closeModal}>
-          <p>게시글을 삭제하시겠습니까?</p>
-          <div className={s.modalBtnDiv}>
-            <button type="button" onClick={closeModal}>
-              남겨둘래요
-            </button>
-            <button type="button" onClick={() => handleDelete(deletePost)}>
-              삭제할래요
-            </button>
-          </div>
-        </Modal>
       )}
     </>
   );

@@ -16,3 +16,7 @@ module.exports = {
   },
   trailingSlash: true,
 };
+
+module.exports = {
+  trailingSlash: true,
+};

@@ -4,6 +4,7 @@ import s from "./search.module.css";
 import Image from "next/image";
 import search_icon from "@/assets/search_icon.svg";
 import SearchView from "./searchView";
+import { SessionProvider } from "next-auth/react";
 
 export default function Search() {
   const [search, setSearch] = useState("");
@@ -43,7 +44,7 @@ export default function Search() {
   };
 
   return (
-    <>
+    <SessionProvider>
       <form className={s.searchForm} onSubmit={handleSubmit}>
         <label htmlFor="search" className="a11y-hidden">
           도서 검색
@@ -60,6 +61,6 @@ export default function Search() {
         </button>
       </form>
       <SearchView searchResult={searchResult} />
-    </>
+    </SessionProvider>
   );
 }

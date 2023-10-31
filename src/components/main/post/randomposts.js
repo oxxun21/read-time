@@ -7,7 +7,7 @@ async function dataRandomFetch() {
   const url = BASE_URL();
   console.log(url);
   try {
-    const response = await fetch(`${url}/api/randompostview`);
+    const response = await fetch(`https://read-time.vercel.app/api/randompostview`);
     const data = await response.json();
     return data;
   } catch (error) {

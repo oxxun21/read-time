@@ -54,9 +54,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .nav ul li:first-of-type {
-    display: none;
-  }
 
   .nav li a,
   .nav li button {

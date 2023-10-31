@@ -1,10 +1,11 @@
 import React from "react";
 import s from "./postview.module.css";
 import Image from "next/image";
-import { BASE_URL } from "@/lib/BASE_URL"
+import { BASE_URL } from "@/lib/BASE_URL";
 
 async function dataRandomFetch() {
   const url = BASE_URL();
+  console.log(url);
   try {
     const response = await fetch(`${url}/api/randompostview`);
     const data = await response.json();
@@ -26,12 +27,7 @@ export default async function Randomposts() {
         <>
           {randomPosts.map((post) => (
             <li key={post._id}>
-              <Image
-                src={post.thumbnail}
-                alt={post.title}
-                width={70}
-                height={100}
-              />
+              <Image src={post.thumbnail} alt={post.title} width={70} height={100} />
               <div>
                 <strong>{post.title}</strong>
                 <p>{post.sentence}</p>

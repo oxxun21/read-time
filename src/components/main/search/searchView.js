@@ -16,7 +16,7 @@ export default function SearchView({ searchResult }) {
   };
 
   const handleModal = () => {
-    setIsModalOpen(true);
+    setIsModalOpen((prev) => !prev);
   };
 
   const handleContentClick = (idx) => {
@@ -29,48 +29,34 @@ export default function SearchView({ searchResult }) {
 
   return (
     <article className={s.searchViewContain}>
-      {!searchResult || searchResult.length === 0 || (
-        <p>책 표지를 눌러 글을 남겨봐요.</p>
-      )}
       {!searchResult || searchResult.length === 0 ? (
         <p className={s.noBooks}>오늘 기억하고 싶은 문장은 무엇인가요?</p>
       ) : (
-        <ul>
-          {searchResult.map((book, idx) => (
-            <li key={book.isbn} className={s.bookInfo}>
-              <strong>{book.title}</strong>
-              {session ? (
-                <Link
-                  href={{
-                    pathname: "/post",
-                    query: { title: book.title, thumbnail: book.thumbnail },
-                  }}
-                >
-                  <Image
-                    src={book.thumbnail}
-                    alt={book.title}
-                    width={80}
-                    height={110}
-                  />
-                </Link>
-              ) : (
-                <Image
-                  src={book.thumbnail}
-                  alt={book.title}
-                  width={80}
-                  height={110}
-                  onClick={handleModal}
-                />
-              )}
-              <p
-                className={expandedIndex === idx ? null : s.expanded}
-                onClick={() => handleContentClick(idx)}
-              >
-                {book.contents ? `${book.contents}...` : "책 소개 없음"}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <>
+          <p>책 표지를 눌러 글을 남겨봐요.</p>
+          <ul>
+            {searchResult.map((book, idx) => (
+              <li key={book.isbn} className={s.bookInfo}>
+                <strong>{book.title}</strong>
+                {session ? (
+                  <Link
+                    href={{
+                      pathname: "/post",
+                      query: { title: book.title, thumbnail: book.thumbnail },
+                    }}
+                  >
+                    <Image src={book.thumbnail} alt={book.title} width={80} height={110} />
+                  </Link>
+                ) : (
+                  <Image src={book.thumbnail} alt={book.title} width={80} height={110} onClick={handleModal} />
+                )}
+                <p className={expandedIndex === idx ? null : s.expanded} onClick={() => handleContentClick(idx)}>
+                  {book.contents ? `${book.contents}...` : "책 소개 없음"}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
       {isModalOpen && (
         <Modal closeModal={closeModal}>

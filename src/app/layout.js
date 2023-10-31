@@ -1,7 +1,7 @@
 import "@/style/globals.css";
-import AuthSession from "./authSesstion";
 import s from "./layout.module.css";
 import localFont from "next/font/local";
+import CustomLayout from "@/components/layout/customLayout";
 
 export const Pretendard = localFont({
   src: "./fonts/Pretendard-Regular.woff2",
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         className={`${Pretendard.className} ${s.scrollbar}`}
         suppressHydrationWarning={true}
       >
-        <AuthSession>{children}</AuthSession>
+        <CustomLayout>{children}</CustomLayout>
         <div id="portal"></div>
       </body>
     </html>

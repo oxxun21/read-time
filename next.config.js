@@ -22,7 +22,7 @@ module.exports = {
     return [
       {
         source: "/api/randompostview",
-        destination: "/api/randompostview",
+        destination: "/api/randompostview/",
         permanent: true,
       },
     ];

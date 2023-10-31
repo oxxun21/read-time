@@ -16,15 +16,3 @@ module.exports = {
   },
   trailingSlash: true,
 };
-
-module.exports = {
-  async redirects() {
-    return [
-      {
-        source: "/api/randompostview",
-        destination: "/api/randompostview/",
-        permanent: true,
-      },
-    ];
-  },
-};

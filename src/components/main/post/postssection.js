@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./postsSection.module.css";
+import s from "./postssection.module.css";
 import PostView from "./postview";
 
 export default async function PostsSection() {

@@ -5,7 +5,6 @@ export async function GET() {
   let client;
   try {
     client = await connectDatabase();
-
     const posts = await getAllDocuments(client, "bookPost");
 
     if (!posts) return NextResponse.json({ message: "책 불러오기를 실패하였습니다." });

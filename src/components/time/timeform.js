@@ -1,11 +1,12 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
 import moment from "moment";
 
 export default function Timeform({ value, record, dataFetch }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +20,10 @@ export default function Timeform({ value, record, dataFetch }) {
       alert("시간을 입력해주세요!");
       return;
     }
+
+    if (isSubmit) return;
+
+    setIsSubmit(true);
 
     if (!record || record.length === 0) {
       try {
@@ -40,6 +45,8 @@ export default function Timeform({ value, record, dataFetch }) {
       } catch (error) {
         console.error("데이터 저장 오류:", error);
         alert("저장 중 오류가 발생했습니다.");
+      } finally {
+        setIsSubmit(false);
       }
     } else {
       try {
@@ -61,6 +68,8 @@ export default function Timeform({ value, record, dataFetch }) {
       } catch (e) {
         console.error("데이터 저장 오류:", e);
         alert("저장 중 오류가 발생했습니다.");
+      } finally {
+        setIsSubmit(false);
       }
     }
     hoursRef.current.value = "";
@@ -95,35 +104,17 @@ export default function Timeform({ value, record, dataFetch }) {
         <p className={s.info}>캘린더를 눌러 수정과 삭제를 할 수 있어요.</p>
         <div className={s.tiemInputDiv}>
           <div className={s.timeInput}>
-            <input
-              type="number"
-              id="hours"
-              ref={hoursRef}
-              min="0"
-              max="23"
-              placeholder="0 ~ 23 입력"
-            />
+            <input type="number" id="hours" ref={hoursRef} min="0" max="23" placeholder="0 ~ 23 입력" />
             <label htmlFor="hours">시간</label>
           </div>
           <div className={s.timeInput}>
-            <input
-              type="number"
-              id="minutes"
-              ref={minutesRef}
-              min="0"
-              max="59"
-              placeholder="0 ~ 59 입력"
-            />
+            <input type="number" id="minutes" ref={minutesRef} min="0" max="59" placeholder="0 ~ 59 입력" />
             <label htmlFor="minutes">분</label>
           </div>
         </div>
         <div className={s.timeBtnDiv}>
           {record.length >= 1 && (
-            <button
-              type="button"
-              onClick={handleTimeDelete}
-              className={s.timeRemove}
-            >
+            <button type="button" onClick={handleTimeDelete} className={s.timeRemove}>
               삭제하기
             </button>
           )}

@@ -9,7 +9,7 @@ async function dataFetch() {
   const sessionId = session.id;
   const url = BASE_URL();
   try {
-    const response = await fetch(`${url}/api/getrecord`, {
+    const response = await fetch(`https://read-time.vercel.app/api/getrecord`, {
       cache: "no-store",
     });
     const resjson = await response.json();

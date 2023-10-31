@@ -21,15 +21,12 @@ export async function PATCH(req) {
         },
       }
     );
-    client.close();
 
-    if (res) {
-      return NextResponse.json({ res });
-    } else {
-      return NextResponse.json({ message: "시간 기록을 실패하였습니다." });
-    }
+    if (!res) return NextResponse.json({ message: "시간 기록을 실패하였습니다." });
+    return NextResponse.json({ res });
   } catch (error) {
-    client.close();
     return NextResponse.json({ message: "서버 오류" });
+  } finally {
+    client.close();
   }
 }

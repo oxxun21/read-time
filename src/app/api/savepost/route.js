@@ -20,15 +20,12 @@ export async function POST(req) {
     };
 
     await insertDocument(client, "bookPost", dataToInsert);
-    client.close();
 
-    if (res) {
-      return NextResponse.json({ res });
-    } else {
-      return NextResponse.json({ message: "책 저장을 실패하였습니다." });
-    }
+    if (!res) return NextResponse.json({ message: "책 저장을 실패하였습니다." });
+    return NextResponse.json({ res });
   } catch (error) {
-    client.close();
     return NextResponse.json({ message: "서버 오류" });
+  } finally {
+    client.close();
   }
 }

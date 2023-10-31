@@ -5,7 +5,6 @@ import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-
   let client;
   try {
     client = await connectDatabase();
@@ -13,15 +12,12 @@ export async function GET() {
     const timeRecord = await getAllDocuments(client, "time", {
       id: session.id,
     });
-    client.close();
 
-    if (timeRecord) {
-      return NextResponse.json(timeRecord);
-    } else {
-      return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
-    }
+    if (!timeRecord) return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
+    return NextResponse.json(timeRecord);
   } catch (error) {
-    client.close();
     return NextResponse.json({ message: "서버 오류" });
+  } finally {
+    client.close();
   }
 }

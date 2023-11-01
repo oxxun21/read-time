@@ -2,13 +2,11 @@
 import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
 import moment from "moment";
-import { useRouter } from "next/navigation";
 
-export default function Timeform({ value, record }) {
+export default function Timeform({ value, record, dataFetch }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
   const [isSubmit, setIsSubmit] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ export default function Timeform({ value, record }) {
 
         if (response.ok) {
           alert("기록 완료!");
-          router.refresh();
+          dataFetch();
         }
       } catch (error) {
         console.error("데이터 저장 오류:", error);
@@ -65,7 +63,7 @@ export default function Timeform({ value, record }) {
 
         if (response.ok) {
           alert("수정 완료!");
-          router.refresh();
+          dataFetch();
         }
       } catch (e) {
         console.error("데이터 저장 오류:", e);
@@ -79,6 +77,10 @@ export default function Timeform({ value, record }) {
   };
 
   const handleTimeDelete = async () => {
+    if (isSubmit) return;
+
+    setIsSubmit(true);
+
     try {
       const response = await fetch("/api/timerecord/remove", {
         method: "DELETE",
@@ -89,12 +91,14 @@ export default function Timeform({ value, record }) {
 
       if (response.ok) {
         alert("삭제 완료!");
-        router.refresh();
+        dataFetch();
       } else {
         alert("삭제에 실패했습니다.");
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsSubmit(false);
     }
   };
 

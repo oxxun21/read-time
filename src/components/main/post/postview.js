@@ -7,6 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 async function PostView() {
   const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <ul className={s.postViewList}>
       {session ? <Myposts /> : <Randomposts />}

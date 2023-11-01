@@ -2,6 +2,7 @@ import { MongoClient } from "mongodb";
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(process.env.DATABASE_URL);
+  console.log(process.env.DATABASE_URL);
   return client;
 }
 
@@ -17,24 +18,20 @@ export async function updateDocument(client, collection, query, update) {
   return result;
 }
 
-export async function getAllDocuments(client, collection, id) {
+export async function getAllDocuments(client, collection) {
   const db = client.db();
-  const documents = await db
-    .collection(collection)
-    .find(id)
-    .sort({ _id: -1 })
-    .toArray();
+  const documents = await db.collection(collection).find().sort({ _id: -1 }).toArray();
   return documents;
 }
 
 export async function getRandomDocuments(client, collection) {
+  console.log(client);
+  console.log(collection);
   const db = client.db();
-  const documents = await db
-    .collection(collection)
-    .find()
-    .sort({ _id: -1 })
-    .limit(5)
-    .toArray();
+  console.log(db);
+  const documents = await db.collection(collection).find().sort({ _id: -1 }).limit(5).toArray();
+
+  console.log(documents);
   return documents;
 }
 

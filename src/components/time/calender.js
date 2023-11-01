@@ -10,7 +10,7 @@ export default function Calender() {
 
   const dataFetch = async () => {
     try {
-      const response = await fetch("/api/getrecord", {
+      const response = await fetch("https://read-time.vercel.app/api/getrecord", {
         cache: "no-store",
       });
       const data = await response.json();

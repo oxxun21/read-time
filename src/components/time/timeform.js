@@ -27,7 +27,7 @@ export default function Timeform({ value, record, dataFetch }) {
 
     if (!record || record.length === 0) {
       try {
-        const response = await fetch("/api/timerecord", {
+        const response = await fetch("https://read-time.vercel.app/api/timerecord", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export default function Timeform({ value, record, dataFetch }) {
       }
     } else {
       try {
-        const response = await fetch("/api/timerecord/edit", {
+        const response = await fetch("https://read-time.vercel.app/api/timerecord/edit", {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export default function Timeform({ value, record, dataFetch }) {
     setIsSubmit(true);
 
     try {
-      const response = await fetch("/api/timerecord/remove", {
+      const response = await fetch("https://read-time.vercel.app/api/timerecord/remove", {
         method: "DELETE",
         body: JSON.stringify({
           _id: record[0]._id,

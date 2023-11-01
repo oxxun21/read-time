@@ -3,24 +3,25 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
 import Timeform from "./timeform";
+import { BASE_URL } from "@/lib/BASE_URL";
 
 export default function Calender() {
   const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState([]);
-
-  const dataFetch = async () => {
-    try {
-      const response = await fetch("https://read-time.vercel.app/api/getrecord", {
-        cache: "no-store",
-      });
-      const data = await response.json();
-      setRecord(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const url = BASE_URL();
 
   useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        const response = await fetch(`${url}/api/getrecord`, {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        setRecord(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     dataFetch();
   }, []);
 

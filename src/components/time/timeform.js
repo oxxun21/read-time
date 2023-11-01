@@ -2,11 +2,13 @@
 import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
 import moment from "moment";
+import { BASE_URL } from "@/lib/BASE_URL";
 
 export default function Timeform({ value, record, setRecord }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
   const [isSubmit, setIsSubmit] = useState(false);
+  const url = BASE_URL();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ export default function Timeform({ value, record, setRecord }) {
 
     if (!record || record.length === 0) {
       try {
-        const response = await fetch("https://read-time.vercel.app/api/timerecord", {
+        const response = await fetch(`/api/timerecord`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +53,7 @@ export default function Timeform({ value, record, setRecord }) {
       }
     } else {
       try {
-        const response = await fetch("https://read-time.vercel.app/api/timerecord/edit", {
+        const response = await fetch(`/api/timerecord/edit`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +85,7 @@ export default function Timeform({ value, record, setRecord }) {
     setIsSubmit(true);
 
     try {
-      const response = await fetch("https://read-time.vercel.app/api/timerecord/remove", {
+      const response = await fetch(`/api/timerecord/remove`, {
         method: "DELETE",
         body: JSON.stringify({
           _id: record[0]._id,

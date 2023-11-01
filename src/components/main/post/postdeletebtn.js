@@ -30,7 +30,6 @@ export default function PostDeleteBtn({ post }) {
         method: "DELETE",
       });
       if (response.ok) {
-        console.log("삭제 성공");
         router.refresh();
       } else {
         console.error("게시물 삭제 실패");

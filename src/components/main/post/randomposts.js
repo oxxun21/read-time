@@ -15,8 +15,6 @@ async function dataRandomFetch() {
 
 export default async function Randomposts() {
   const randomPosts = await dataRandomFetch();
-  const url = BASE_URL();
-  console.log(url);
   return (
     <>
       {!randomPosts || randomPosts.length === 0 ? (

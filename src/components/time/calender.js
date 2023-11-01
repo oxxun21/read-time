@@ -6,7 +6,7 @@ import Timeform from "./timeform";
 
 export default function Calender() {
   const [value, onChange] = useState(new Date());
-  const [record, setRecord] = useState();
+  const [record, setRecord] = useState([]);
 
   const dataFetch = async () => {
     try {

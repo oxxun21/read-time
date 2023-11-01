@@ -26,6 +26,11 @@
   transform: scale(1.1);
 }
 
+.bookInfo img {
+  width: 80px;
+  height: 110px;
+}
+
 .bookInfo button {
   order: 1;
   cursor: pointer;

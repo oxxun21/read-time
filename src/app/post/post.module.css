@@ -32,6 +32,11 @@
   padding: 0 5rem;
 }
 
+.postForm img {
+  width: 110px;
+  height: 160px;
+}
+
 .posting {
   display: flex;
   flex-direction: column;

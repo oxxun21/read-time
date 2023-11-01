@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./postview.module.css";
-import Image from "next/image";
 import {BASE_URL} from "@/lib/BASE_URL"
 
 async function dataRandomFetch() {
@@ -25,11 +24,10 @@ export default async function Randomposts() {
         <>
           {randomPosts.map((post) => (
             <li key={post._id}>
-              <Image
+              <img
                 src={post.thumbnail}
                 alt={post.title}
-                width={70}
-                height={100}
+                className={s.bookThumbnail}
               />
               <div>
                 <strong>{post.title}</strong>

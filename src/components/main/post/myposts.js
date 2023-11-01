@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./postview.module.css";
-import Image from "next/image";
 import PostDeleteBtn from "./postdeletebtn";
 import { headers } from "next/headers";
 
@@ -31,7 +30,7 @@ export default async function Myposts() {
         <>
           {posts.map((post) => (
             <li key={post._id}>
-              <Image src={post.thumbnail} alt={post.title} width={70} height={100} />
+              <img src={post.thumbnail} alt={post.title} className={s.bookThumbnail} />
               <div>
                 <strong>{post.title}</strong>
                 <p>{post.sentence}</p>

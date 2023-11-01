@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import s from "./post.module.css";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 function Post(props) {
   const params = props.searchParams;
@@ -54,7 +53,7 @@ function Post(props) {
 
   return (
     <form className={s.postForm} onSubmit={handleSubmit}>
-      <Image src={thumbnail} alt={title} width={110} height={160} />
+      <img src={thumbnail} alt={title} />
       <div className={s.posting}>
         <strong>{title}</strong>
         <textarea

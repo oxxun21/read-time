@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import s from "./searchView.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Modal from "@/components/modal/modal";
@@ -45,10 +44,10 @@ export default function SearchView({ searchResult }) {
                       query: { title: book.title, thumbnail: book.thumbnail },
                     }}
                   >
-                    <Image src={book.thumbnail} alt={book.title} width={80} height={110} />
+                    <img src={book.thumbnail} alt={book.title}  />
                   </Link>
                 ) : (
-                  <Image src={book.thumbnail} alt={book.title} width={80} height={110} onClick={handleModal} />
+                  <img src={book.thumbnail} alt={book.title} onClick={handleModal} />
                 )}
                 <p className={expandedIndex === idx ? null : s.expanded} onClick={() => handleContentClick(idx)}>
                   {book.contents ? `${book.contents}...` : "책 소개 없음"}

@@ -11,9 +11,6 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log(user);
-      console.log(process.env.NEXTAUTH_SECRET);
-      console.log(process.env.DATABASE_URL);
       const client = await connectDatabase();
       const db = client.db();
       const usersCollection = db.collection("users");

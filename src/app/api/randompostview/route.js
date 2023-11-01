@@ -7,9 +7,7 @@ export async function GET() {
   let client;
   try {
     client = await connectDatabase();
-    console.log(client);
     const posts = await getRandomDocuments(client, "bookPost");
-    console.log(posts);
     if (!posts) return NextResponse.json({ message: "책 불러오기를 실패하였습니다." });
     return NextResponse.json(posts);
   } catch (error) {

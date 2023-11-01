@@ -1,11 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
 import Timeform from "./timeform";
 
-export default function Calender({ record }) {
+export default function Calender() {
   const [value, onChange] = useState(new Date());
+  const [record, setRecord] = useState();
+
+  const dataFetch = async () => {
+    try {
+      const response = await fetch("/api/getrecord", {
+        cache: "no-store",
+      });
+      const data = await response.json();
+      setRecord(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    dataFetch();
+  }, []);
 
   let highlightList;
   if (record) {
@@ -49,6 +66,7 @@ export default function Calender({ record }) {
       <Timeform
         value={value}
         record={record ? record.filter((item) => item.date === moment(value).format("YYYY-MM-DD")) : []}
+        dataFetch={dataFetch}
       />
     </>
   );

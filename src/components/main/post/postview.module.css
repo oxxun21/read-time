@@ -23,6 +23,11 @@
   background-color: rgba(87, 87, 87, 0.581);
 }
 
+.postViewList .bookThumbnail {
+  width: 70px;
+  height: 100px;
+}
+
 .postViewList li>img {
   flex-grow: 0;
 }

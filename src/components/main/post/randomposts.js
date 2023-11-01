@@ -1,12 +1,11 @@
 import React from "react";
 import s from "./postview.module.css";
-import Image from "next/image";
-import { BASE_URL } from "@/lib/BASE_URL";
+import {BASE_URL} from "@/lib/BASE_URL"
 
 async function dataRandomFetch() {
   const url = BASE_URL();
   try {
-    const response = await fetch(`${url}/api/randompostview`);
+    const response = await fetch(`https://read-time.vercel.app/api/randompostview`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -16,8 +15,6 @@ async function dataRandomFetch() {
 
 export default async function Randomposts() {
   const randomPosts = await dataRandomFetch();
-  const url = BASE_URL();
-  console.log(url);
   return (
     <>
       {!randomPosts || randomPosts.length === 0 ? (
@@ -28,7 +25,11 @@ export default async function Randomposts() {
         <>
           {randomPosts.map((post) => (
             <li key={post._id}>
-              <Image src={post.thumbnail} alt={post.title} width={70} height={100} />
+              <img
+                src={post.thumbnail}
+                alt={post.title}
+                className={s.bookThumbnail}
+              />
               <div>
                 <strong>{post.title}</strong>
                 <p>{post.sentence}</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./timeCheckPage.module.css";
-import TimeFetch from "@/components/time/timefetch";
+import Calender from "@/components/time/calender";
 
 export const metadata = {
   title: "Read Time | TimeCheck",
@@ -10,7 +10,7 @@ export const metadata = {
 export default async function TimeCheck() {
   return (
     <div className={s.contain}>
-      <TimeFetch />
+      <Calender />
     </div>
   );
 }

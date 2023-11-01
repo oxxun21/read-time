@@ -12,7 +12,6 @@ export async function DELETE(req) {
     client = await connectDatabase();
 
     await deleteDocument(client, "time", { _id: new ObjectId(res._id) });
-    client.close();
 
     if (!res) return NextResponse.json({ message: "기록 삭제에 실패하였습니다." });
     return NextResponse.json({ res });

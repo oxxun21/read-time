@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 export default function PostDeleteBtn({ post }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deletePost, setDeletePost] = useState();
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const router = useRouter();
   const openModal = (postId) => {
     setDeletePost(postId);
@@ -20,6 +22,9 @@ export default function PostDeleteBtn({ post }) {
   };
 
   const handleDelete = async (postId) => {
+    if (isSubmit) return;
+
+    setIsSubmit(true);
     try {
       const response = await fetch(`/api/postdelete/${postId}`, {
         method: "DELETE",
@@ -32,6 +37,8 @@ export default function PostDeleteBtn({ post }) {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmit(false);
     }
     setIsModalOpen(false);
   };

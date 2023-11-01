@@ -24,12 +24,13 @@
 }
 
 .postForm {
-  width: 100%;
   margin-top: 20px;
+  min-height: 60vh;
+  padding: 0 5rem;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 0 5rem;
 }
 
 .postForm img {
@@ -40,7 +41,6 @@
 .posting {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex-grow: 1;
   gap: 15px;
 }

@@ -39,8 +39,8 @@ export default function Timeform({ value, record, dataFetch }) {
         });
 
         if (response.ok) {
-          alert("기록 완료!");
           dataFetch();
+          alert("기록 완료!");
         }
       } catch (error) {
         console.error("데이터 저장 오류:", error);
@@ -62,8 +62,8 @@ export default function Timeform({ value, record, dataFetch }) {
         });
 
         if (response.ok) {
-          alert("수정 완료!");
           dataFetch();
+          alert("수정 완료!");
         }
       } catch (e) {
         console.error("데이터 저장 오류:", e);
@@ -90,8 +90,8 @@ export default function Timeform({ value, record, dataFetch }) {
       });
 
       if (response.ok) {
-        alert("삭제 완료!");
         dataFetch();
+        alert("삭제 완료!");
       } else {
         alert("삭제에 실패했습니다.");
       }

@@ -1,11 +1,14 @@
-import { connectDatabase, deleteDocument } from "@/lib/helpers/db-util";
+import { connectDatabase, deleteDocument, getAllDocuments } from "@/lib/helpers/db-util";
 import { ObjectId } from "mongodb";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+import { authOptions } from "../../auth/[...nextauth]/route";
 
 export const dynamic = "force-dynamic";
 
 export async function DELETE(req) {
   const res = await req.json();
+  const session = await getServerSession(authOptions);
 
   let client;
   try {
@@ -16,8 +19,7 @@ export async function DELETE(req) {
     if (!res) return NextResponse.json({ message: "기록 삭제에 실패하였습니다." });
 
     try {
-      const timeRecord = await getAllDocuments(client, "time");
-
+      const timeRecord = await getAllDocuments(client, "time", { id: session.id });
       if (!timeRecord) return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
       return NextResponse.json(timeRecord);
     } catch (error) {

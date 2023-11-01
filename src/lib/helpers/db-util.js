@@ -17,9 +17,9 @@ export async function updateDocument(client, collection, query, update) {
   return result;
 }
 
-export async function getAllDocuments(client, collection) {
+export async function getAllDocuments(client, collection, id) {
   const db = client.db();
-  const documents = await db.collection(collection).find().sort({ _id: -1 }).toArray();
+  const documents = await db.collection(collection).find(id).sort({ _id: -1 }).toArray();
   return documents;
 }
 

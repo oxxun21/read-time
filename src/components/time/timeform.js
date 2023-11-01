@@ -38,6 +38,7 @@ export default function Timeform({ value, record, setRecord }) {
           }),
         });
         const data = await response.json();
+        console.log(data);
         if (response.ok) {
           setRecord(data);
           alert("기록 완료!");

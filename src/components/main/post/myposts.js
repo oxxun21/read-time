@@ -10,7 +10,7 @@ async function dataFetch() {
     const session = await getServerSession(authOptions);
     const sessionId = session.id;
     const url = BASE_URL();
-    console.log("test!!!!!!!!!!", `${url}/api/postsview`);
+
     const response = await fetch(`${url}/api/postsview`, {
       cache: "no-store",
     });

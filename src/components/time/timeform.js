@@ -2,13 +2,11 @@
 import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
 import moment from "moment";
-import { BASE_URL } from "@/lib/BASE_URL";
 
 export default function Timeform({ value, record, setRecord }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
   const [isSubmit, setIsSubmit] = useState(false);
-  const url = BASE_URL();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

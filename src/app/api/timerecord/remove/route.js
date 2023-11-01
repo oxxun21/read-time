@@ -14,9 +14,17 @@ export async function DELETE(req) {
     await deleteDocument(client, "time", { _id: new ObjectId(res._id) });
 
     if (!res) return NextResponse.json({ message: "기록 삭제에 실패하였습니다." });
-    return NextResponse.json({ res });
+
+    try {
+      const timeRecord = await getAllDocuments(client, "time");
+
+      if (!timeRecord) return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
+      return NextResponse.json(timeRecord);
+    } catch (error) {
+      return NextResponse.json({ message: "기록 불러오기 서버 오류" });
+    }
   } catch (error) {
-    return NextResponse.json({ message: "서버 오류" });
+    return NextResponse.json({ message: "기록 서버 오류" });
   } finally {
     client.close();
   }

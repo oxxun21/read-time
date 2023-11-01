@@ -66,7 +66,7 @@ export default function Calender() {
       <Timeform
         value={value}
         record={record ? record.filter((item) => item.date === moment(value).format("YYYY-MM-DD")) : []}
-        dataFetch={dataFetch}
+        setRecord={setRecord}
       />
     </>
   );

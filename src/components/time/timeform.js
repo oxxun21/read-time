@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import s from "./timeform.module.css";
 import moment from "moment";
 
-export default function Timeform({ value, record, dataFetch }) {
+export default function Timeform({ value, record, setRecord }) {
   const hoursRef = useRef();
   const minutesRef = useRef();
   const [isSubmit, setIsSubmit] = useState(false);
@@ -37,9 +37,9 @@ export default function Timeform({ value, record, dataFetch }) {
             time: formattedReadingTime,
           }),
         });
-
+        const data = await response.json();
         if (response.ok) {
-          dataFetch();
+          setRecord(data);
           alert("기록 완료!");
         }
       } catch (error) {
@@ -60,9 +60,9 @@ export default function Timeform({ value, record, dataFetch }) {
             time: formattedReadingTime,
           }),
         });
-
+        const data = await response.json();
         if (response.ok) {
-          dataFetch();
+          setRecord(data);
           alert("수정 완료!");
         }
       } catch (e) {
@@ -88,9 +88,9 @@ export default function Timeform({ value, record, dataFetch }) {
           _id: record[0]._id,
         }),
       });
-
+      const data = await response.json();
       if (response.ok) {
-        dataFetch();
+        setRecord(data);
         alert("삭제 완료!");
       } else {
         alert("삭제에 실패했습니다.");

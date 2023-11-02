@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./timeCheckPage.module.css";
+import s from "../layout.module.css";
 import Calender from "@/components/time/calender";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default async function TimeCheck() {
   return (
-    <div className={s.contain}>
+    <div className={`${s.contain} ${s.time}`}>
       <Calender />
     </div>
   );

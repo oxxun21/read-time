@@ -18,6 +18,7 @@
 
 .contain {
   display: flex;
+  gap: 3rem;
 }
 
 .contain section {
@@ -50,5 +51,13 @@
 
   .contain section {
     width: 100%;
+  }
+
+  .contain.time>section:first-of-type {
+    order: 2;
+  }
+
+  .contain.time>section:last-of-type {
+    order: 1;
   }
 }

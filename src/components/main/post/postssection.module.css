@@ -1,5 +1,4 @@
 .postsSection {
-  padding-left: 2rem;
   position: relative;
 }
 
@@ -11,7 +10,6 @@
 
 @media screen and (max-width: 768px) {
   .postsSection {
-    padding-left: 0;
     position: relative;
     padding-top: 2rem;
   }

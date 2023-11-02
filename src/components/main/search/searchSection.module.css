@@ -1,13 +1,3 @@
-.searchSection {
-  padding-right: 2rem;
-}
-
 .searchSection h2 {
   font-size: 1.25rem;
-}
-
-@media screen and (max-width: 768px) {
-  .searchSection {
-    padding-right: 0;
-  }
 }

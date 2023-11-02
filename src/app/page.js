@@ -1,4 +1,4 @@
-import s from "./mainPage.module.css";
+import s from "./layout.module.css";
 import SearchSection from "@/components/main/search/searchSection";
 import PostsSection from "@/components/main/post/postssection";
 

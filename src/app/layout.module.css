@@ -16,6 +16,14 @@
   background-color: transparent;
 }
 
+.contain {
+  display: flex;
+}
+
+.contain section {
+  width: 50%;
+}
+
 @media screen and (max-width: 768px) {
   .scrollbar {
     overflow: auto;
@@ -33,5 +41,14 @@
   .scrollbar::-webkit-scrollbar-track {
     box-shadow: initial;
     background-color: initial;
+  }
+
+  .contain {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contain section {
+    width: 100%;
   }
 }

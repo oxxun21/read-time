@@ -139,14 +139,10 @@ li {
 }
 
 .react-calendar__tile--now {
-  background: var(--main-cinnamon-color);
-}
-
-.react-calendar__tile--now.highlight>div>p {
-  color: #fff;
-}
-
-.react-calendar__month-view__days__day:hover,
-.react-calendar__month-view__days__day:focus {
   outline: 1px solid var(--sub-cinnamon-color);
+
+}
+
+.react-calendar__month-view__days__day.selected {
+  outline: 2px solid var(--main-cinnamon-color);
 }

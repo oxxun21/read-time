@@ -4,6 +4,9 @@ import Calendar from "react-calendar";
 import moment from "moment/moment";
 import Timeform from "./timeform";
 
+// 로그아웃 시 url로 오는거 막기
+// error 처리
+
 export default function Calender() {
   const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState([]);
@@ -42,7 +45,7 @@ export default function Calender() {
 
     return <div>{contents}</div>;
   };
-
+  
   return (
     <>
       <section>
@@ -56,9 +59,15 @@ export default function Calender() {
           showNeighboringMonth={false}
           formatDay={(locale, date) => moment(date).format("DD")}
           tileClassName={({ date, view }) => {
-            if (record && highlightList.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              return "highlight";
+            const dateString = moment(date).format("YYYY-MM-DD");
+            let classNames = [];
+            if (record && highlightList.find((x) => x === dateString)) {
+              classNames.push("highlight");
             }
+            if (dateString === moment(value).format("YYYY-MM-DD")) {
+              classNames.push("selected");
+            }
+            return classNames.join(" ");
           }}
         />
       </section>

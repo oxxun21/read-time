@@ -1,7 +1,6 @@
 import React from "react";
 import s from "../layout.module.css";
 import Calender from "@/components/time/calender";
-import { getServerSession } from "next-auth";
 
 export const metadata = {
   title: "Read Time | TimeCheck",
@@ -9,10 +8,9 @@ export const metadata = {
 };
 
 export default async function TimeCheck() {
-  const session = getServerSession();
   return (
     <div className={`${s.contain} ${s.time}`}>
-      <Calender session={session} />
+      <Calender />
     </div>
   );
 }

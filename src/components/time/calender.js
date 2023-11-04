@@ -3,14 +3,10 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
 import Timeform from "./timeform";
-import { useRouter } from "next/navigation";
 
-export default function Calender({session}) {
+export default function Calender() {
   const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState([]);
-  const router = useRouter();
-
-  if (session) router.push("/");
 
   useEffect(() => {
     const dataFetch = async () => {

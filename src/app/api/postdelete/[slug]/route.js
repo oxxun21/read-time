@@ -13,9 +13,9 @@ export async function DELETE(req) {
   try {
     client = await connectDatabase();
     await deleteDocument(client, "bookPost", { _id: new ObjectId(postId) });
-    return NextResponse.json("성공");
+    return NextResponse.json({ message: "post delete 성공" }, { status: 200 });
   } catch (e) {
-    return NextResponse.json("서버 에러");
+    return NextResponse.json({ message: "post delete 서버 오류" }, { status: 500 });
   } finally {
     client.close();
   }

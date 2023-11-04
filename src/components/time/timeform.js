@@ -17,15 +17,16 @@ export default function Timeform({ value, record, setRecord }) {
         },
         body: JSON.stringify(body),
       });
-      const data = await response.json();
-      console.log(data);
-      if (response.ok) {
-        setRecord(data);
-        alert(`${method === "POST" ? "기록" : "수정"} 완료!`);
+      if (!response.ok) {
+        alert("Time Record 기록 중 문제가 발생하였습니다.")
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
+      const data = await response.json();
+      setRecord(data);
+      alert(`${method === "POST" ? "기록" : "수정"} 완료!`);
     } catch (error) {
-      console.error("데이터 저장 오류:", error);
-      alert("저장 중 오류가 발생했습니다.");
+      console.error(error);
     } finally {
       setIsSubmit(false);
     }
@@ -65,9 +66,7 @@ export default function Timeform({ value, record, setRecord }) {
 
   const handleTimeDelete = async () => {
     if (isSubmit) return;
-
     setIsSubmit(true);
-
     try {
       const response = await fetch(`/api/timerecord/remove`, {
         method: "DELETE",
@@ -75,14 +74,16 @@ export default function Timeform({ value, record, setRecord }) {
           _id: record[0]._id,
         }),
       });
-      const data = await response.json();
-      if (response.status == 200) {
-        setRecord(data);
-        alert("삭제 완료!");
+      if (!response.ok) {
+        alert("Time Record 삭제 중 문제가 발생하였습니다.");
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
-    } catch (e) {
-      alert("삭제에 실패했습니다.");
-      console.error(e);
+      const data = await response.json();
+      setRecord(data);
+      alert("삭제 완료!");
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsSubmit(false);
     }

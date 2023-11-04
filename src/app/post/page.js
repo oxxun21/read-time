@@ -36,16 +36,17 @@ function Post(props) {
         }),
       });
 
-      if (response.ok) {
-        alert("게시글 등록 완료!");
-        router.push("/");
-        router.refresh();
-      } else {
-        alert("게시글 등록에 실패했습니다.");
+      if (!response.ok) {
+        alert("게시글 등록 중 문제가 발생하였습니다.")
+        const errorData = await response.json();
+        throw new Error(errorData.message);
       }
+
+      alert("게시글 등록 완료!");
+      router.push("/");
+      router.refresh();
     } catch (error) {
-      console.error("데이터 저장 오류:", error);
-      alert("저장 중 오류가 발생했습니다.");
+      console.error(error);
     } finally {
       setIsSubmit(false);
     }

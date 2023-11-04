@@ -14,6 +14,11 @@ export default function Calender() {
         const response = await fetch(`/api/getrecord`, {
           cache: "no-store",
         });
+        if (!response.ok) {
+          alert("Time Record를 불러오던 중 문제가 발생하였습니다.")
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
         const data = await response.json();
         setRecord(data);
       } catch (error) {

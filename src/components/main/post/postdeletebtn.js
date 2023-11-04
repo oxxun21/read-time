@@ -23,16 +23,15 @@ export default function PostDeleteBtn({ post }) {
 
   const handleDelete = async (postId) => {
     if (isSubmit) return;
-
     setIsSubmit(true);
     try {
       const response = await fetch(`/api/postdelete/${postId}`, {
         method: "DELETE",
       });
-      if (response.ok) {
+      if (response.status === 200) {
         router.refresh();
       } else {
-        console.error("게시물 삭제 실패");
+        alert("Post 삭제 중 문제가 발생하였습니다.");
       }
     } catch (error) {
       console.error(error);

@@ -23,14 +23,12 @@ export default function Search() {
           cache: "no-store",
         }
       );
-
-      if (response.ok) {
-        const resJson = await response.json();
-        const filterData = resJson.documents.filter((item) => item.thumbnail);
-        setSearchResult(filterData);
-      } else {
+      if (!response.ok) {
         console.error("API 호출 실패:", response.status);
-      }
+      } 
+      const resJson = await response.json();
+      const filterData = resJson.documents.filter((item) => item.thumbnail);
+      setSearchResult(filterData);
     } catch (error) {
       console.error("API 호출 실패:", error);
     } finally {

@@ -10,6 +10,7 @@ export async function PATCH(req) {
   const res = await req.json();
   const session = await getServerSession(authOptions);
   let client;
+  if (!res) return NextResponse.json({ message: "request 문제 발생" }, { status: 500 });
   try {
     client = await connectDatabase();
 
@@ -24,16 +25,11 @@ export async function PATCH(req) {
       }
     );
 
-    if (!res) return NextResponse.json({ message: "시간 기록을 실패하였습니다." });
-    try {
-      const timeRecord = await getAllDocuments(client, "time", { id: session.id });
-      if (!timeRecord) return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
-      return NextResponse.json(timeRecord);
-    } catch (error) {
-      return NextResponse.json({ message: "기록 불러오기 서버 오류" });
-    }
+    const timeRecord = await getAllDocuments(client, "time", { id: session.id });
+
+    return NextResponse.json(timeRecord, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "기록 서버 오류" });
+    return NextResponse.json({ message: "time record edit 서버 오류: " + error.message }, { status: 500 });
   } finally {
     client.close();
   }

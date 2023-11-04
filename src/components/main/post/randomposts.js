@@ -6,6 +6,11 @@ async function dataRandomFetch() {
   const url = BASE_URL();
   try {
     const response = await fetch(`${url}/api/randompostview`);
+    if (!response.ok) {
+      alert("게시글 불러오는 중 문제가 발생하였습니다.")
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
     const data = await response.json();
     return data;
   } catch (error) {

@@ -6,16 +6,12 @@ import { getServerSession } from "next-auth";
 export async function GET() {
   let client;
   const session = await getServerSession(authOptions);
-
   try {
     client = await connectDatabase();
-
     const timeRecord = await getAllDocuments(client, "time", { id: session.id });
-
-    if (!timeRecord) return NextResponse.json({ message: "기록 가져오기를 실패하였습니다." });
-    return NextResponse.json(timeRecord);
+    return NextResponse.json(timeRecord, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "서버 오류" });
+    return NextResponse.json({ message: "get time record 서버 오류: " + error.message }, { status: 500 });
   } finally {
     client.close();
   }

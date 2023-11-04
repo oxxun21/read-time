@@ -14,6 +14,11 @@ async function dataFetch() {
     const response = await fetch(`${url}/api/postsview`, {
       cache: "no-store",
     });
+    if (!response.ok) {
+      alert("게시글 불러오는 중 문제가 발생하였습니다.")
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
     const resjson = await response.json();
     const data = resjson.filter((i) => i.id === sessionId);
     return data;

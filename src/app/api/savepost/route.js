@@ -9,6 +9,8 @@ export async function POST(req) {
   const res = await req.json();
   const session = await getServerSession(authOptions);
 
+  if (!res) return NextResponse.json({ message: "request 문제 발생" }, { status: 500 });
+
   let client;
   try {
     client = await connectDatabase();
@@ -20,11 +22,9 @@ export async function POST(req) {
     };
 
     await insertDocument(client, "bookPost", dataToInsert);
-
-    if (!res) return NextResponse.json({ message: "책 저장을 실패하였습니다." });
-    return NextResponse.json({ res });
+    return NextResponse.json({ res }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "서버 오류" });
+    return NextResponse.json({ message: "save post 서버 오류: " + error.message }, { status: 500 });
   } finally {
     client.close();
   }

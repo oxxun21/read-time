@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment/moment";
 import Timeform from "./timeform";
+import { useRouter } from "next/navigation";
 
-// 로그아웃 시 url로 오는거 막기
-// error 처리
-
-export default function Calender() {
+export default function Calender({session}) {
   const [value, onChange] = useState(new Date());
   const [record, setRecord] = useState([]);
+  const router = useRouter();
+
+  if (session) router.push("/");
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -45,7 +46,7 @@ export default function Calender() {
 
     return <div>{contents}</div>;
   };
-  
+
   return (
     <>
       <section>

@@ -6,6 +6,7 @@ module.exports = nextConfig;
 module.exports = {
   images: {
     domains: ["search1.kakaocdn.net", "k.kakaocdn.net"],
+    unoptimized: true,
   },
   env: {
     RESTAPI_KEY: process.env.RESTAPI_KEY,

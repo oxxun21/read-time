@@ -3,10 +3,10 @@
   "functions": {
     "/api/auth/[...nextauth]": {},
     "/api/postdelete/[slug]": {},
-    "/api/postsview": {},
-    "/api/randompostview": {},
     "/api/timerecord/edit": {},
+    "/api/postsview": {},
     "/api/savepost": {},
+    "/api/randompostview": {},
     "/api/timerecord/remove": {},
     "/api/timerecord": {},
     "/": {},

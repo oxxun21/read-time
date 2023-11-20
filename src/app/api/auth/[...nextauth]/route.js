@@ -25,6 +25,9 @@ export const authOptions = {
       ...session,
       id: token.sub,
     }),
+    redirect: async (url, baseUrl) => {
+      return url.startsWith(baseUrl) ? Promise.resolve(url) : Promise.resolve(baseUrl);
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   database: process.env.DATABASE_URL,

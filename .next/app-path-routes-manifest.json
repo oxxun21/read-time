@@ -10,8 +10,8 @@
   "/api/postsview/route": "/api/postsview",
   "/api/timerecord/route": "/api/timerecord",
   "/api/savepost/route": "/api/savepost",
-  "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
   "/api/postdelete/[slug]/route": "/api/postdelete/[slug]",
-  "/api/timerecord/remove/route": "/api/timerecord/remove",
-  "/api/timerecord/edit/route": "/api/timerecord/edit"
+  "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
+  "/api/timerecord/edit/route": "/api/timerecord/edit",
+  "/api/timerecord/remove/route": "/api/timerecord/remove"
 }

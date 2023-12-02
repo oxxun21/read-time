@@ -1,17 +1,17 @@
 {
   "/_not-found": "/_not-found",
-  "/opengraph-image.png/route": "/opengraph-image.png",
   "/favicon.ico/route": "/favicon.ico",
+  "/opengraph-image.png/route": "/opengraph-image.png",
   "/page": "/",
   "/post/page": "/post",
   "/timecheck/page": "/timecheck",
   "/api/getrecord/route": "/api/getrecord",
-  "/api/randompostview/route": "/api/randompostview",
   "/api/postsview/route": "/api/postsview",
-  "/api/savepost/route": "/api/savepost",
+  "/api/randompostview/route": "/api/randompostview",
   "/api/timerecord/route": "/api/timerecord",
-  "/api/postdelete/[slug]/route": "/api/postdelete/[slug]",
+  "/api/savepost/route": "/api/savepost",
   "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
-  "/api/timerecord/remove/route": "/api/timerecord/remove",
-  "/api/timerecord/edit/route": "/api/timerecord/edit"
+  "/api/postdelete/[slug]/route": "/api/postdelete/[slug]",
+  "/api/timerecord/edit/route": "/api/timerecord/edit",
+  "/api/timerecord/remove/route": "/api/timerecord/remove"
 }

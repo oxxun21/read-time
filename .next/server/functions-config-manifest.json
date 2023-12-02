@@ -2,13 +2,13 @@
   "version": 1,
   "functions": {
     "/api/auth/[...nextauth]": {},
-    "/api/postdelete/[slug]": {},
     "/api/postsview": {},
+    "/api/postdelete/[slug]": {},
     "/api/randompostview": {},
     "/api/savepost": {},
     "/api/timerecord/edit": {},
-    "/api/timerecord": {},
     "/api/timerecord/remove": {},
+    "/api/timerecord": {},
     "/": {},
     "/timecheck": {}
   }

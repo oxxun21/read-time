@@ -21,7 +21,11 @@ export default function SignInBtn() {
       {loginModalOpen && (
         <Modal closeModal={() => setLoginModalOpen(false)}>
           <strong className={s.loginStrong}>Login</strong>
-          <button type="button" onClick={() => signIn("kakao")} className={s.loginBtn}>
+          <button
+            type="button"
+            onClick={() => signIn("kakao", { callbackUrl: process.env.NEXTAUTH_URL })}
+            className={s.loginBtn}
+          >
             Kakao 로그인
           </button>
         </Modal>

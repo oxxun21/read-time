@@ -1,17 +1,17 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/opengraph-image.png/route": "app/opengraph-image.png/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/opengraph-image.png/route": "app/opengraph-image.png/route.js",
   "/page": "app/page.js",
   "/post/page": "app/post/page.js",
   "/timecheck/page": "app/timecheck/page.js",
   "/api/getrecord/route": "app/api/getrecord/route.js",
   "/api/randompostview/route": "app/api/randompostview/route.js",
   "/api/postsview/route": "app/api/postsview/route.js",
-  "/api/timerecord/route": "app/api/timerecord/route.js",
   "/api/savepost/route": "app/api/savepost/route.js",
-  "/api/postdelete/[slug]/route": "app/api/postdelete/[slug]/route.js",
+  "/api/timerecord/route": "app/api/timerecord/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/postdelete/[slug]/route": "app/api/postdelete/[slug]/route.js",
   "/api/timerecord/edit/route": "app/api/timerecord/edit/route.js",
   "/api/timerecord/remove/route": "app/api/timerecord/remove/route.js"
 }

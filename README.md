@@ -13,7 +13,6 @@
 <tr>
  <td align="center">기술 스택</td>
  <td>
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">&nbsp 
 <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white"/>&nbsp 
 <img src="https://img.shields.io/badge/mongodb-00684A?style=for-the-badge&logo=mongodb&logoColor=white">    
  </td>

@@ -8,7 +8,7 @@ export default function SignInBtn() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const handleSignIn = async () => {
-    await signIn("kakao", { callbackUrl: process.env.NEXTAUTH_URL });
+    await signIn("kakao", { callbackUrl: "/" });
   };
 
   return (

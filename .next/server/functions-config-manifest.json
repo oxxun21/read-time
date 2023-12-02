@@ -7,8 +7,8 @@
     "/api/randompostview": {},
     "/api/savepost": {},
     "/api/timerecord/edit": {},
-    "/api/timerecord/remove": {},
     "/api/timerecord": {},
+    "/api/timerecord/remove": {},
     "/": {},
     "/timecheck": {}
   }

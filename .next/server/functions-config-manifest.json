@@ -5,11 +5,11 @@
     "/api/postdelete/[slug]": {},
     "/api/postsview": {},
     "/api/randompostview": {},
-    "/api/timerecord/edit": {},
     "/api/savepost": {},
-    "/api/timerecord": {},
+    "/api/timerecord/edit": {},
     "/api/timerecord/remove": {},
-    "/": {},
-    "/timecheck": {}
+    "/api/timerecord": {},
+    "/timecheck": {},
+    "/": {}
   }
 }

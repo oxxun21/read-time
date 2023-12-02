@@ -23,7 +23,7 @@ export default function SignInBtn() {
           <strong className={s.loginStrong}>Login</strong>
           <button
             type="button"
-            onClick={() => signIn("kakao", { callbackUrl: process.env.NEXTAUTH_URL })}
+            onClick={() => signIn("kakao", { callbackUrl: process.env.NEXTAUTH_URL, redirect: false })}
             className={s.loginBtn}
           >
             Kakao 로그인

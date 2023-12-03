@@ -2,8 +2,8 @@
   "version": 1,
   "functions": {
     "/api/auth/[...nextauth]": {},
-    "/api/postsview": {},
     "/api/postdelete/[slug]": {},
+    "/api/postsview": {},
     "/api/randompostview": {},
     "/api/savepost": {},
     "/api/timerecord/edit": {},

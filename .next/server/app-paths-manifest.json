@@ -10,8 +10,8 @@
   "/api/randompostview/route": "app/api/randompostview/route.js",
   "/api/savepost/route": "app/api/savepost/route.js",
   "/api/timerecord/route": "app/api/timerecord/route.js",
+  "/api/timerecord/remove/route": "app/api/timerecord/remove/route.js",
   "/api/postdelete/[slug]/route": "app/api/postdelete/[slug]/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/timerecord/edit/route": "app/api/timerecord/edit/route.js",
-  "/api/timerecord/remove/route": "app/api/timerecord/remove/route.js"
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }

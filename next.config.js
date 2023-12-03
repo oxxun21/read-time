@@ -14,6 +14,7 @@ module.exports = {
     KAKAO_CLIENT_SECRET: process.env.KAKAO_CLIENT_SECRET,
     KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   trailingSlash: true,
 };

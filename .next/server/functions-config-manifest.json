@@ -1,15 +1,15 @@
 {
   "version": 1,
   "functions": {
-    "/api/auth/[...nextauth]": {},
-    "/api/postdelete/[slug]": {},
     "/api/postsview": {},
+    "/api/postdelete/[slug]": {},
     "/api/randompostview": {},
-    "/api/timerecord/remove": {},
+    "/api/auth/[...nextauth]": {},
+    "/api/savepost": {},
     "/api/timerecord/edit": {},
+    "/api/timerecord/remove": {},
     "/api/timerecord": {},
     "/timecheck": {},
-    "/api/savepost": {},
     "/": {}
   }
 }

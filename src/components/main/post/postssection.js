@@ -6,9 +6,9 @@ export default async function PostsSection() {
   return (
     <section className={s.postsSection}>
       <h3>Post</h3>
-      {/* <Suspense fallback={<p className={s.loading}>게시글을 불러오는 중입니다...</p>}> */}
+      <Suspense fallback={<p className={s.loading}>게시글을 불러오는 중입니다...</p>}>
         <PostView />
-      {/* </Suspense> */}
+      </Suspense>
     </section>
   );
 }

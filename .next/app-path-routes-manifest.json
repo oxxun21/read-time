@@ -12,6 +12,6 @@
   "/api/timerecord/route": "/api/timerecord",
   "/api/postdelete/[slug]/route": "/api/postdelete/[slug]",
   "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
-  "/api/timerecord/edit/route": "/api/timerecord/edit",
-  "/api/timerecord/remove/route": "/api/timerecord/remove"
+  "/api/timerecord/remove/route": "/api/timerecord/remove",
+  "/api/timerecord/edit/route": "/api/timerecord/edit"
 }
